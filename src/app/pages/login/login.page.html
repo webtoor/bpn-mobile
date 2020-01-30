@@ -1,0 +1,24 @@
+<ion-content class="ion-padding">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+    
+<ion-item  class="marginTop">
+  <ion-label color="dark" floating-label><ion-icon name="mail"></ion-icon></ion-label>
+  <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+</ion-item>
+    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+    <div *ngIf="f.email.errors.required">Email is required</div>
+    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+</div>
+  <ion-item class="marginTop">
+  <ion-label color="dark" floating-label><ion-icon name="lock"></ion-icon></ion-label>
+  <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+  </ion-item>
+  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+      <div *ngIf="f.password.errors.required">Password is required</div>
+  </div>
+<div class="ion-text-center" style="margin-top:40px">
+<ion-button color="dark" expand="block" type="submit" style="height:40px" >Login</ion-button>
+</div>
+</form>
+</ion-content>

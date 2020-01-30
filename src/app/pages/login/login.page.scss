@@ -1,0 +1,24 @@
+.marginTop{
+    // margin-top:150px;
+        margin: 20px 0;
+    }
+    
+    .toast-message {
+        white-space: pre-line;
+    }
+    ion-content{
+        --ion-background-color:#FFFFFF;
+    }
+    :host {
+        .item-interactive.ion-invalid{
+         --highlight-background: #f04141 !important;
+       }
+       .item-interactive.ion-valid{
+         --highlight-background: #10dc60 !important;
+       }
+     }
+    
+     .invalid-feedback{
+       color: #ff0000;
+       font-size: 13px;
+     }

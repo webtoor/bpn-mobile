@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-toolbar color="dark">
+     <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Formulir Laporan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>TAHUN</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Tahun</ion-label>
+        <ion-select interface="popover">
+          <ion-select-option value="nes">2019</ion-select-option>
+          <ion-select-option value="nes">2020</ion-select-option>
+          <ion-select-option value="n64">2021</ion-select-option>
+          <ion-select-option value="n64">2022</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>LOKASI</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Kota/Kabupaten</ion-label>
+        <ion-select interface="popover">
+          <ion-select-option value="nes">Kota Bandung</ion-select-option>
+          <ion-select-option value="n64">Kabupaten Bandung</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Kecamatan</ion-label>
+        <ion-select interface="popover">
+          <ion-select-option value="nes">Coblong</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Kelurahan/Desa</ion-label>
+        <ion-select interface="popover">
+          <ion-select-option value="nes">Lebak Gede</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>REALISASI</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">PENGUMPULAN DATA YURIDIS <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">ENTRI WARKAH <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">KKP <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">PENGUKURAN <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">PEMETAAN <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">PBT <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">SU <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">PENGUMUMAN <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">PENGESAHAN <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">CETAK BT/SERTIFIKAT <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">PENYERAHAN <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <div class="ion-text-center" style="margin-top:10px; padding: 5px;">
+    <ion-button color="dark" expand="block" type="submit" style="height:40px">SUBMIT</ion-button>
+    </div>
+</ion-content>

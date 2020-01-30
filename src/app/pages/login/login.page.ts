@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginPage implements OnInit {
   loginForm: FormGroup;
   submitted = false;
-  constructor(public menu: MenuController, private formBuilder: FormBuilder,) {
+  constructor(public menu: MenuController, private formBuilder: FormBuilder, private router:Router) {
     this.menu.enable(false);
    }
 
@@ -27,6 +28,7 @@ export class LoginPage implements OnInit {
         return;
     }
     console.log(this.loginForm.value)
+    this.router.navigate(['/dashboard'], {replaceUrl: true})
   }
 
   get f() { return this.loginForm.controls; }

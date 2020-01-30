@@ -1,5 +1,7 @@
 {
   "name": "bpn",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

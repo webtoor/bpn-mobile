@@ -8,14 +8,22 @@
 </ion-header>
 
 <ion-content>
+  <ion-card text-center>
+    <ion-card-content text-center>
+      <div slot="end" style="width: 300px; height: 300px;">
+        <img src="assets/logo/bpn_logo.png" height="300px;" width="300px;" />
+      </div>
+    </ion-card-content>
+  </ion-card>
+
   <ion-card>
     <ion-card-header>
-      <ion-card-subtitle>TAHUN</ion-card-subtitle>
+      <ion-card-subtitle>I. Tanggal Pelaporan <ion-text color="danger">*Wajib</ion-text></ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content>
       <ion-item>
-        <ion-label position="floating">Tanggal Pelaporan</ion-label>
+        <ion-label position="stacked">Jawaban Anda <ion-text color="danger">*</ion-text></ion-label>
         <ion-datetime displayFormat="DD/MM//YYYY" min="2020-02-01" max="2025-01-01"></ion-datetime>
       </ion-item>
       
@@ -25,88 +33,112 @@
 
   <ion-card>
     <ion-card-header>
-      <ion-card-subtitle>LOKASI</ion-card-subtitle>
+      <ion-card-subtitle>II. Nama Penanggung Jawab Laporan <ion-text color="danger">*Wajib</ion-text></ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content>
       <ion-item>
-        <ion-label>Kota/Kabupaten</ion-label>
-        <ion-select interface="popover">
-          <ion-select-option value="nes">Kota Bandung</ion-select-option>
-          <ion-select-option value="n64">Kabupaten Bandung</ion-select-option>
-        </ion-select>
+        <ion-label position="stacked">Jawaban Anda <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="text"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label>Kecamatan</ion-label>
-        <ion-select interface="popover">
-          <ion-select-option value="nes">Coblong</ion-select-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Kelurahan/Desa</ion-label>
-        <ion-select interface="popover">
-          <ion-select-option value="nes">Lebak Gede</ion-select-option>
-        </ion-select>
-      </ion-item>
+      
 
     </ion-card-content>
   </ion-card>
 
   <ion-card>
     <ion-card-header>
-      <ion-card-subtitle>REALISASI</ion-card-subtitle>
+      <ion-card-subtitle>III. Kantor Pertanahan <ion-text color="danger">*Wajib</ion-text></ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content>
       <ion-item>
-        <ion-label position="stacked">PENGUMPULAN DATA YURIDIS <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number"></ion-input>
+        <ion-label>Pilih Kota/Kabupaten <ion-text color="danger">*</ion-text></ion-label>
+        <ion-select interface="popover">
+          <ion-select-option value="1">Kab. Bekasi</ion-select-option>
+          <ion-select-option value="2">Kab. Karawang</ion-select-option>
+          <ion-select-option value="3">Kab. Purwakarta</ion-select-option>
+          <ion-select-option value="4">Kab. Subang</ion-select-option>
+          <ion-select-option value="5">Kota Bogor</ion-select-option>
+          <ion-select-option value="6">Kab. Bogor</ion-select-option>
+          <ion-select-option value="7">Kab. Sukabumi</ion-select-option>
+          <ion-select-option value="8">Kota Sukabumi</ion-select-option>
+          <ion-select-option value="9">Kab. Cianjur</ion-select-option>
+          <ion-select-option value="10">Kab. Bandung</ion-select-option>
+          <ion-select-option value="11">Kota Bandung</ion-select-option>
+          <ion-select-option value="12">Kab. Sumedang</ion-select-option>
+          <ion-select-option value="13">Kab. Garut</ion-select-option>
+          <ion-select-option value="14">Kab. Tasikmalaya</ion-select-option>
+          <ion-select-option value="15">Kab. Ciamis</ion-select-option>
+          <ion-select-option value="16">Kab. Cirebon</ion-select-option>
+          <ion-select-option value="17">Kota Cirebon</ion-select-option>
+          <ion-select-option value="18">Kab. Kuningan</ion-select-option>
+          <ion-select-option value="19">Kab. Majalengka </ion-select-option>
+          <ion-select-option value="20">Kab. Indramayu</ion-select-option>
+          <ion-select-option value="21">Kota Bekas</ion-select-option>
+          <ion-select-option value="22">Kota Depok</ion-select-option>
+          <ion-select-option value="23">Kota Cimahi</ion-select-option>
+          <ion-select-option value="24">Kota Banjar</ion-select-option>
+          <ion-select-option value="25">Kota Tasikmalaya</ion-select-option>
+          <ion-select-option value="26">Kab. Bandung Barat</ion-select-option>
+          <ion-select-option value="26">Kab. Pangandaran</ion-select-option>
+
+
+        </ion-select>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>III. Pengumpulan Data Fisik</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-item class="bottom">
+        <ion-label position="stacked">a) Terukur ASN <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label position="stacked">ENTRI WARKAH <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number"></ion-input>
+      <ion-item class="bottom">
+        <ion-label position="stacked">b) Terukur ASN (PTSL PM) </ion-label>
+        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label position="stacked">KKP <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number"></ion-input>
+      <ion-item class="bottom">
+        <ion-label position="stacked">c) Terukur KJSKB/PT <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label position="stacked">PENGUKURAN <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number"></ion-input>
+      <ion-item class="bottom">
+        <ion-label position="stacked">d) Tergambar ASN </ion-label>
+        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label position="stacked">PEMETAAN <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number"></ion-input>
+      <ion-item class="bottom">
+        <ion-label position="stacked">e) Tergambar ASN (PTSL PM) <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label position="stacked">PBT <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number"></ion-input>
+
+      <ion-item class="bottom">
+        <ion-label position="stacked">f) Tergambar (KJSKB/PT) <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label position="stacked">SU <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number"></ion-input>
+
+      <ion-item class="bottom">
+        <ion-label position="stacked">g) Potensi K4 <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label position="stacked">PENGUMUMAN <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number"></ion-input>
+
+      <ion-item class="bottom">
+        <ion-label position="stacked">h) Terukur Redistribusi </ion-label>
+        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label position="stacked">PENGESAHAN <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">CETAK BT/SERTIFIKAT <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">PENYERAHAN <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number"></ion-input>
+
+       <ion-item class="bottom">
+        <ion-label position="stacked">i) Tergambar Redistribusi </ion-label>
+        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
       </ion-item>
     </ion-card-content>
   </ion-card>

@@ -1,9 +1,37 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>register</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content padding>
+  <ion-item class="bottom">
+    <ion-label position="stacked">Pelaksana <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input type="text" placeholder="Contoh : PT. Digital Imaging Geospasial"></ion-input>
+  </ion-item>
+  <ion-item class="bottom">
+    <ion-label position="stacked">Tim <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input type="number" placeholder="Contoh : 1"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Kota/Kabupaten <ion-text color="danger">*</ion-text></ion-label>
+    <ion-select interface="popover" placeholder="Pilih Kota/Kabupaten sesuai proyek Anda"></ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Kecamatan <ion-text color="danger">*</ion-text></ion-label>
+    <ion-select interface="popover" placeholder="Pilih Kecamatan sesuai proyek Anda"> </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Kelurahan/Desa <ion-text color="danger">*</ion-text></ion-label>
+    <ion-select interface="popover" placeholder="Pilih Kelurahan/Desa sesuai proyek Anda"></ion-select>
+  </ion-item>
+  <ion-item class="bottom">
+    <ion-label position="stacked">Target <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input type="number" placeholder="Contoh : 500"></ion-input>
+  </ion-item>
+  <ion-item class="bottom">
+    <ion-label position="stacked">Email <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input type="number" placeholder="Contoh : example@gmail.com"></ion-input>
+  </ion-item>
+  <ion-item class="bottom">
+    <ion-label position="stacked">Password <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input type="number" placeholder="Masukan password"></ion-input>
+  </ion-item>
+  <div class="ion-text-center" style="margin-top:40px">
+    <ion-button color="tertiary" expand="block" type="submit" style="height:40px" >SUBMIT</ion-button>
+    </div>
 </ion-content>

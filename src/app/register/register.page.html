@@ -12,17 +12,21 @@
   </ion-item>
   <ion-item>
     <ion-label position="stacked">Kota/Kabupaten <ion-text color="danger">*</ion-text></ion-label>
-    <ion-select interface="popover" placeholder="Pilih Kota/Kabupaten sesuai proyek Anda">
-    <ion-select-option *ngFor="let item of kotakab">{{item.name}}</ion-select-option>
+    <ion-select (ionChange)="getKecamatan($event)" interface="popover" placeholder="Pilih Kota/Kabupaten sesuai proyek Anda">
+    <ion-select-option *ngFor="let item of kotakab" value="{{item.id}}">{{item.name}}</ion-select-option>
   </ion-select>
   </ion-item>
   <ion-item>
     <ion-label position="stacked">Kecamatan <ion-text color="danger">*</ion-text></ion-label>
-    <ion-select interface="popover" placeholder="Pilih Kecamatan sesuai proyek Anda"> </ion-select>
+    <ion-select disabled="{{kecamatanIsEnabled}}" (ionChange)="getDesa($event)" interface="popover" placeholder="Pilih Kecamatan sesuai proyek Anda"> 
+      <ion-select-option *ngFor="let item of kecamatan" value="{{item.id}}">{{item.name}}</ion-select-option>
+    </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label position="stacked">Kelurahan/Desa <ion-text color="danger">*</ion-text></ion-label>
-    <ion-select interface="popover" placeholder="Pilih Kelurahan/Desa sesuai proyek Anda"></ion-select>
+    <ion-label position="stacked">Desa <ion-text color="danger">*</ion-text></ion-label>
+    <ion-select disabled="{{desaIsEnabled}}" interface="popover" placeholder="Pilih Kelurahan/Desa sesuai proyek Anda">
+      <ion-select-option *ngFor="let item of desa" value="{{item.id}}">{{item.name}}</ion-select-option>
+    </ion-select>
   </ion-item>
   <ion-item class="bottom">
     <ion-label position="stacked">Target <ion-text color="danger">*</ion-text></ion-label>

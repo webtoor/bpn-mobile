@@ -13,6 +13,11 @@ export class RegisterPage implements OnInit {
   registerForm: FormGroup;
   submitted = false;
   kotakab:any;
+  kecamatan:any;
+  desa:any;
+  kecamatanIsEnabled = true;
+  desaIsEnabled = true;
+
   constructor(private formBuilder: FormBuilder,
     public menu: MenuController, public router:Router, public apiService : ApiService) {
     this.menu.enable(false);
@@ -46,12 +51,50 @@ export class RegisterPage implements OnInit {
      //console.log(res)
       if(res['status'] == 1){
         this.kotakab = res['data']
-        console.log(this.kotakab)
+      
+        //console.log(this.kotakab)
       }
     
     }, (err) => {
  
     });
+  }
+
+  getKecamatan(event){
+    console.log(event.detail.value)
+    this.kecamatanIsEnabled = true;
+    this.desaIsEnabled = true;
+    this.kecamatan = null;
+     this.apiService.getData('kecamatan/' + event.detail.value).subscribe(res => {
+      if(res['status'] == 1){
+        this.kecamatanIsEnabled = false;
+        this.kecamatan = res['data']
+        this.desaIsEnabled = true;
+
+        //console.log(this.kotakab)
+      }
+      
+     
+     }, (err) => {
+  
+     });
+  }
+
+  getDesa(event){
+    console.log(event.detail.value)
+    this.desaIsEnabled = true;
+    this.desa = null;
+    this.apiService.getData('desa/' + event.detail.value).subscribe(res => {
+      if(res['status'] == 1){
+        this.desaIsEnabled = false;
+        this.desa = res['data']
+        console.log(res)
+      }
+      
+     
+     }, (err) => {
+  
+     });
   }
 
 

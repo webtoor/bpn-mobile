@@ -1,9 +1,9 @@
 <ion-header>
-  <ion-toolbar color="dark">
+  <ion-toolbar color="tertiary">
      <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Formulir Laporan</ion-title>
+    <ion-title>Report Harian</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -24,32 +24,17 @@
     <ion-card-content>
       <ion-item>
         <ion-label position="stacked">Jawaban Anda <ion-text color="danger">*</ion-text></ion-label>
-        <ion-datetime displayFormat="DD/MM//YYYY" min="2020-02-01" max="2025-01-01"></ion-datetime>
+        <ion-datetime displayFormat="DD/MM/YYYY" min="2020-02-01" max="2025-01-01"></ion-datetime>
       </ion-item>
       
 
     </ion-card-content>
   </ion-card>
 
+ 
   <ion-card>
     <ion-card-header>
-      <ion-card-subtitle>II. Nama Penanggung Jawab Laporan <ion-text color="danger">*Wajib</ion-text></ion-card-subtitle>
-    </ion-card-header>
-  
-    <ion-card-content>
-      <ion-item>
-        <ion-label position="stacked">Jawaban Anda <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-
-      
-
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>III. Kantor Pertanahan <ion-text color="danger">*Wajib</ion-text></ion-card-subtitle>
+      <ion-card-subtitle>II. Lokasi <ion-text color="danger">*Wajib</ion-text></ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content>
@@ -97,52 +82,60 @@
   
     <ion-card-content>
       <ion-item class="bottom">
-        <ion-label position="stacked">a) Terukur ASN <ion-text color="danger">*</ion-text></ion-label>
+        <ion-label position="stacked">a) Terukur <ion-text color="danger">*</ion-text></ion-label>
         <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
       </ion-item>
 
       <ion-item class="bottom">
-        <ion-label position="stacked">b) Terukur ASN (PTSL PM) </ion-label>
+        <ion-label position="stacked">b) Tergambar </ion-label>
+        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
+      </ion-item>
+
+
+      <ion-item class="bottom">
+        <ion-label position="stacked">c) Entry KKP <ion-text color="danger">*</ion-text></ion-label>
         <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
       </ion-item>
 
       <ion-item class="bottom">
-        <ion-label position="stacked">c) Terukur KJSKB/PT <ion-text color="danger">*</ion-text></ion-label>
+        <ion-label position="stacked">d) Pengukuran <ion-text color="danger">*</ion-text></ion-label>
         <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
       </ion-item>
 
       <ion-item class="bottom">
-        <ion-label position="stacked">d) Tergambar ASN </ion-label>
-        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
-      </ion-item>
-
-      <ion-item class="bottom">
-        <ion-label position="stacked">e) Tergambar ASN (PTSL PM) <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
-      </ion-item>
-
-      <ion-item class="bottom">
-        <ion-label position="stacked">f) Tergambar (KJSKB/PT) <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
-      </ion-item>
-
-      <ion-item class="bottom">
-        <ion-label position="stacked">g) Potensi K4 <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
-      </ion-item>
-
-      <ion-item class="bottom">
-        <ion-label position="stacked">h) Terukur Redistribusi </ion-label>
+        <ion-label position="stacked">e) Pemetaan </ion-label>
         <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
       </ion-item>
 
        <ion-item class="bottom">
-        <ion-label position="stacked">i) Tergambar Redistribusi </ion-label>
+        <ion-label position="stacked">f) PBT </ion-label>
         <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
       </ion-item>
+
+      <ion-item class="bottom">
+        <ion-label position="stacked">g) SU </ion-label>
+        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
+      </ion-item>
+
+      <ion-item class="bottom">
+        <ion-label position="stacked">h) Pengumuman </ion-label>
+        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
+      </ion-item>
+
+      <ion-item class="bottom">
+        <ion-label position="stacked">i) Pengesahan </ion-label>
+        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
+      </ion-item>
+
+      <ion-item class="bottom">
+        <ion-label position="stacked">j) Keterangan </ion-label>
+        <ion-textarea rows="3" cols="20" placeholder="Masukan Keterangan"></ion-textarea>
+      </ion-item>
+
     </ion-card-content>
+
   </ion-card>
   <div class="ion-text-center" style="margin-top:10px; padding: 5px;">
-    <ion-button color="dark" expand="block" type="submit" style="height:40px">SUBMIT</ion-button>
+    <ion-button color="tertiary" expand="block" type="submit" style="height:40px">SUBMIT</ion-button>
     </div>
 </ion-content>

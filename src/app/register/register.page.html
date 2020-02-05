@@ -1,4 +1,7 @@
-<ion-content padding>
+<ion-content class="ion-padding">
+  <!-- <div *ngFor="let item of kotakab">
+    {{item.name}}
+  </div> -->
   <ion-item class="bottom">
     <ion-label position="stacked">Pelaksana <ion-text color="danger">*</ion-text></ion-label>
     <ion-input type="text" placeholder="Contoh : PT. Digital Imaging Geospasial"></ion-input>
@@ -9,7 +12,9 @@
   </ion-item>
   <ion-item>
     <ion-label position="stacked">Kota/Kabupaten <ion-text color="danger">*</ion-text></ion-label>
-    <ion-select interface="popover" placeholder="Pilih Kota/Kabupaten sesuai proyek Anda"></ion-select>
+    <ion-select interface="popover" placeholder="Pilih Kota/Kabupaten sesuai proyek Anda">
+    <ion-select-option *ngFor="let item of kotakab">{{item.name}}</ion-select-option>
+  </ion-select>
   </ion-item>
   <ion-item>
     <ion-label position="stacked">Kecamatan <ion-text color="danger">*</ion-text></ion-label>

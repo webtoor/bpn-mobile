@@ -13,7 +13,7 @@ export class LoaderService {
     this.isLoading = true;
     return await this.loadingController.create({
       message: 'Please wait...',
-      duration: 5000,
+      duration: 3000,
     }).then(a => {
       a.present().then(() => {
         console.log('presented');

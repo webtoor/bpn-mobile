@@ -8,8 +8,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-card text-center>
-    <ion-card-content text-center>
+  <ion-card class="ion-text-center">
+    <ion-card-content class="ion-text-center">
       <div slot="end" style="width: 300px; height: 300px;">
         <img src="assets/logo/bpn_logo.png" height="300px;" width="300px;" />
       </div>
@@ -24,7 +24,7 @@
     <ion-card-content>
       <ion-item>
         <ion-label position="stacked">Jawaban Anda <ion-text color="danger">*</ion-text></ion-label>
-        <ion-datetime displayFormat="DD/MM/YYYY" min="2020-02-01" max="2025-01-01"></ion-datetime>
+        <ion-datetime displayFormat="DD-MM-YYYY" min="2020-02-01" max="2025-01-01"></ion-datetime>
       </ion-item>
       
 
@@ -38,40 +38,13 @@
     </ion-card-header>
   
     <ion-card-content>
-      <ion-item>
-        <ion-label>Pilih Kota/Kabupaten <ion-text color="danger">*</ion-text></ion-label>
-        <ion-select interface="popover">
-          <ion-select-option value="1">Kab. Bekasi</ion-select-option>
-          <ion-select-option value="2">Kab. Karawang</ion-select-option>
-          <ion-select-option value="3">Kab. Purwakarta</ion-select-option>
-          <ion-select-option value="4">Kab. Subang</ion-select-option>
-          <ion-select-option value="5">Kota Bogor</ion-select-option>
-          <ion-select-option value="6">Kab. Bogor</ion-select-option>
-          <ion-select-option value="7">Kab. Sukabumi</ion-select-option>
-          <ion-select-option value="8">Kota Sukabumi</ion-select-option>
-          <ion-select-option value="9">Kab. Cianjur</ion-select-option>
-          <ion-select-option value="10">Kab. Bandung</ion-select-option>
-          <ion-select-option value="11">Kota Bandung</ion-select-option>
-          <ion-select-option value="12">Kab. Sumedang</ion-select-option>
-          <ion-select-option value="13">Kab. Garut</ion-select-option>
-          <ion-select-option value="14">Kab. Tasikmalaya</ion-select-option>
-          <ion-select-option value="15">Kab. Ciamis</ion-select-option>
-          <ion-select-option value="16">Kab. Cirebon</ion-select-option>
-          <ion-select-option value="17">Kota Cirebon</ion-select-option>
-          <ion-select-option value="18">Kab. Kuningan</ion-select-option>
-          <ion-select-option value="19">Kab. Majalengka </ion-select-option>
-          <ion-select-option value="20">Kab. Indramayu</ion-select-option>
-          <ion-select-option value="21">Kota Bekas</ion-select-option>
-          <ion-select-option value="22">Kota Depok</ion-select-option>
-          <ion-select-option value="23">Kota Cimahi</ion-select-option>
-          <ion-select-option value="24">Kota Banjar</ion-select-option>
-          <ion-select-option value="25">Kota Tasikmalaya</ion-select-option>
-          <ion-select-option value="26">Kab. Bandung Barat</ion-select-option>
-          <ion-select-option value="26">Kab. Pangandaran</ion-select-option>
-
-
-        </ion-select>
-      </ion-item>
+      <ion-list>
+        <ion-item *ngFor="let location of locations">
+          <ion-label style="font-size: 10px;">{{location.kotakab.name}}, {{location.kecamatan.name}}, {{location.desa.name}}</ion-label>
+          <div style="font-size: 10px;">{{location.target}}</div>
+          <ion-checkbox slot="end" value="{{location.id}}"></ion-checkbox>
+        </ion-item>
+      </ion-list>
     </ion-card-content>
   </ion-card>
 

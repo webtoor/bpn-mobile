@@ -46,4 +46,42 @@ export class ApiService {
       
     );
   }  
+
+  login(data, type){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Accept' : 'application/json',
+      })
+    };
+    return this.http.post<any>(apiUrl+type, data, httpOptions)
+    .pipe(
+      
+    );
+  }  
+
+  getDataAuth(type, access_token){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Accept' : 'application/json',
+        'Authorization': 'Bearer ' + access_token
+      })
+    };
+    return this.http.get(apiUrl+type, httpOptions)
+    .pipe(
+      map(res => {
+        if (res['status'] == '5') {
+          throw new Error('Value expected!');
+        }
+       /*  if(res['status'] == 401){
+          localStorage.clear();
+          this.router.navigate(['login'], {replaceUrl : true})
+        } */
+        //console.log(res['data'])
+        return res;
+      }),
+      catchError(this.handleError)
+   );
+  }
 }

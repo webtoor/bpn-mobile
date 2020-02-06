@@ -69,6 +69,7 @@ export class RegisterPage implements OnInit {
           console.log(res.error[obj].toString())
        }
         this.presentToast(pes.toString(), 'bottom')
+        this.loading.dismiss();
       }
     });
   }

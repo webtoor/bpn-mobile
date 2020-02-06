@@ -3,6 +3,7 @@ import { MenuController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../service/api.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -19,15 +20,18 @@ export class RegisterPage implements OnInit {
   desaIsEnabled = true;
 
   constructor(private formBuilder: FormBuilder,
-    public menu: MenuController, public router:Router, public apiService : ApiService) {
+    public menu: MenuController, public router:Router, public apiService : ApiService, public toastController: ToastController) {
     this.menu.enable(false);
     this.registerForm = this.formBuilder.group({
-      'pelaksana' : [null, [Validators.required, Validators.email]],
+      'pelaksana' : [null, [Validators.required]],
       'tim' : [null, Validators.required],
       'kotakab' : [null, Validators.required],
       'kecamatan' : [null, Validators.required],
       'desa' : [null, Validators.required],
+      'target' : [null, Validators.required],
+      'email' : [null, [Validators.required, Validators.email]],
       'password' : [null, Validators.required],
+      'password_confirmation' : null
     });
    }
 
@@ -44,6 +48,23 @@ export class RegisterPage implements OnInit {
         return;
     }
     console.log(this.registerForm.value)
+    this.registerForm.patchValue({
+      password_confirmation : this.registerForm.value.password
+    })
+    console.log(this.registerForm.value)
+    this.apiService.register(this.registerForm.value, 'api/v1/admin/client').subscribe(res => {
+      console.log(res)
+     
+
+      if(res.error){
+        var pes = "";
+        for(var obj in res.error) { 
+          pes += res.error[obj].toString() + "\n";
+          console.log(res.error[obj].toString())
+       }
+        this.presentToast(pes.toString())
+      }
+    });
   }
 
   getKotaKab(){
@@ -97,6 +118,13 @@ export class RegisterPage implements OnInit {
      });
   }
 
-
+  async presentToast(msg) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 3000,
+      position: 'bottom'
+    });
+    toast.present();
+  }
 
 }

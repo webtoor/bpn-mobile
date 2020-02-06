@@ -32,5 +32,18 @@ export class ApiService {
   private handleError(error: Response | any) {  
     console.error(error.message || error);  
     return Observable.throw(error.status);  
+  }
+
+    register(data, type){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Accept' : 'application/json',
+      })
+    };
+    return this.http.post<any>(apiUrl+type, data, httpOptions)
+    .pipe(
+      
+    );
   }  
 }

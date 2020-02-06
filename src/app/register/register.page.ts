@@ -3,6 +3,8 @@ import { MenuController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../service/api.service';
+import { LoaderService } from '../service/loader.service';
+
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -19,7 +21,7 @@ export class RegisterPage implements OnInit {
   kecamatanIsEnabled = true;
   desaIsEnabled = true;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder, public loading: LoaderService,
     public menu: MenuController, public router:Router, public apiService : ApiService, public toastController: ToastController) {
     this.menu.enable(false);
     this.registerForm = this.formBuilder.group({
@@ -52,17 +54,21 @@ export class RegisterPage implements OnInit {
       password_confirmation : this.registerForm.value.password
     })
     console.log(this.registerForm.value)
-    this.apiService.register(this.registerForm.value, 'api/v1/admin/client').subscribe(res => {
-      console.log(res)
-     
+    this.loading.present();
 
+    this.apiService.register(this.registerForm.value, 'register').subscribe(res => {
+      console.log(res)
+      if(res.status == "1"){
+        this.presentToast('Terima Kasih, Anda berhasil Register', 'top')
+        this.loading.dismiss();
+      }
       if(res.error){
         var pes = "";
         for(var obj in res.error) { 
           pes += res.error[obj].toString() + "\n";
           console.log(res.error[obj].toString())
        }
-        this.presentToast(pes.toString())
+        this.presentToast(pes.toString(), 'bottom')
       }
     });
   }
@@ -118,11 +124,11 @@ export class RegisterPage implements OnInit {
      });
   }
 
-  async presentToast(msg) {
+  async presentToast(msg, positions) {
     const toast = await this.toastController.create({
       message: msg,
       duration: 3000,
-      position: 'bottom'
+      position: positions
     });
     toast.present();
   }

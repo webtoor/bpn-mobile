@@ -84,4 +84,18 @@ export class ApiService {
       catchError(this.handleError)
    );
   }
+
+  postDataAuth(data, type, access_token){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Accept' : 'application/json',
+        'Authorization': 'Bearer ' + access_token
+      })
+    };
+    return this.http.post<any>(apiUrl+type, data, httpOptions)
+    .pipe(
+      
+    );
+  }  
 }

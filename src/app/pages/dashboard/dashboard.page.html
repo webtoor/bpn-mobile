@@ -25,7 +25,10 @@
     <ion-card-content>
       <ion-item>
         <ion-label position="stacked">Jawaban Anda <ion-text color="danger">*</ion-text></ion-label>
-        <ion-datetime displayFormat="DD-MM-YYYY" min="2020-02-01" max="2025-01-01"></ion-datetime>
+        <ion-datetime displayFormat="DD-MM-YYYY" min="2020-02-01" max="2025-01-01" formControlName="dtreport"></ion-datetime>
+        <div *ngIf="submitted && f.dtreport.errors" class="invalid-feedback">
+          <div *ngIf="f.dtreport.errors.required">Tanggal Pelaporan Tidak Boleh Kosong</div>
+        </div>
       </ion-item>
       
 
@@ -40,11 +43,14 @@
   
     <ion-card-content>
       <ion-list>
-        <ion-radio-group allow-empty-selection>
+        <ion-radio-group formControlName="lokasi">
           <ion-item *ngFor="let location of locations">
           <ion-label style="font-size: 10px;">{{location.kotakab.name}}, {{location.kecamatan.name}}, {{location.desa.name}}</ion-label>
           <ion-radio slot="end" value="{{location.id}}"></ion-radio>
         </ion-item>
+        <div *ngIf="submitted && f.lokasi.errors" class="invalid-feedback">
+          <div *ngIf="f.lokasi.errors.required">Lokasi Tidak Boleh Kosong</div>
+        </div>
         </ion-radio-group>
       </ion-list>
     </ion-card-content>
@@ -58,53 +64,80 @@
     <ion-card-content>
       <ion-item class="bottom">
         <ion-label position="stacked">a) Terukur <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
+        <ion-input type="number" placeholder="Jawaban Anda" formControlName="terukur"></ion-input>
+        <div *ngIf="submitted && f.terukur.errors" class="invalid-feedback">
+          <div *ngIf="f.terukur.errors.required">Terukur Tidak Boleh Kosong</div>
+        </div>
       </ion-item>
 
       <ion-item class="bottom">
         <ion-label position="stacked">b) Tergambar <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
+        <ion-input type="number" placeholder="Jawaban Anda" formControlName="tergambar"></ion-input>
+        <div *ngIf="submitted && f.tergambar.errors" class="invalid-feedback">
+          <div *ngIf="f.tergambar.errors.required">Tergambar Tidak Boleh Kosong</div>
+        </div>
       </ion-item>
 
 
       <ion-item class="bottom">
-        <ion-label position="stacked">c) Entry KKP <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
+        <ion-label position="stacked">c) Entri KKP <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" placeholder="Jawaban Anda" formControlName="kkp"></ion-input>
+        <div *ngIf="submitted && f.kkp.errors" class="invalid-feedback">
+          <div *ngIf="f.kkp.errors.required">Entri KKP Tidak Boleh Kosong</div>
+        </div>
       </ion-item>
 
       <ion-item class="bottom">
         <ion-label position="stacked">d) Pengukuran <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
+        <ion-input type="number" placeholder="Jawaban Anda" formControlName="pengukuran"></ion-input>
+        <div *ngIf="submitted && f.pengukuran.errors" class="invalid-feedback">
+          <div *ngIf="f.pengukuran.errors.required">Pengukuran Tidak Boleh Kosong</div>
+        </div>
       </ion-item>
 
       <ion-item class="bottom">
         <ion-label position="stacked">e) Pemetaan <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
+        <ion-input type="number" placeholder="Jawaban Anda" formControlName="pemetaan"></ion-input>
+        <div *ngIf="submitted && f.pemetaan.errors" class="invalid-feedback">
+          <div *ngIf="f.pemetaan.errors.required">Pemetaan Tidak Boleh Kosong</div>
+        </div>
       </ion-item>
 
        <ion-item class="bottom">
         <ion-label position="stacked">f) PBT <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
+        <ion-input type="number" placeholder="Jawaban Anda" formControlName="pbt"></ion-input>
+        <div *ngIf="submitted && f.pbt.errors" class="invalid-feedback">
+          <div *ngIf="f.pbt.errors.required">PBT Tidak Boleh Kosong</div>
+        </div>
       </ion-item>
 
       <ion-item class="bottom">
         <ion-label position="stacked">g) SU <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
+        <ion-input type="number" placeholder="Jawaban Anda" formControlName="su"></ion-input>
+        <div *ngIf="submitted && f.su.errors" class="invalid-feedback">
+          <div *ngIf="f.su.errors.required">SU Tidak Boleh Kosong</div>
+        </div>
       </ion-item>
 
       <ion-item class="bottom">
         <ion-label position="stacked">h) Pengumuman <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
+        <ion-input type="number" placeholder="Jawaban Anda" formControlName="pengumuman"></ion-input>
+        <div *ngIf="submitted && f.pengumuman.errors" class="invalid-feedback">
+          <div *ngIf="f.pengumuman.errors.required">Pengumuman Tidak Boleh Kosong</div>
+        </div>
       </ion-item>
 
       <ion-item class="bottom">
         <ion-label position="stacked">i) Pengesahan <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" placeholder="Jawaban Anda"></ion-input>
+        <ion-input type="number" placeholder="Jawaban Anda" formControlName="pengesahan"></ion-input>
+        <div *ngIf="submitted && f.pengesahan.errors" class="invalid-feedback">
+          <div *ngIf="f.pengesahan.errors.required">Pengesahan Tidak Boleh Kosong</div>
+        </div>
       </ion-item>
 
       <ion-item class="bottom">
         <ion-label position="stacked">j) Keterangan </ion-label>
-        <ion-textarea rows="3" cols="20" placeholder="Masukan Keterangan"></ion-textarea>
+        <ion-textarea rows="3" cols="20" placeholder="Masukan Keterangan" formControlName="keterangan"></ion-textarea>
       </ion-item>
 
     </ion-card-content>
@@ -113,4 +146,5 @@
   <div class="ion-text-center" style="margin-top:10px; padding: 5px;">
     <ion-button color="tertiary" expand="block" type="submit" style="height:40px">SUBMIT</ion-button>
     </div>
+    </form>
 </ion-content>

@@ -4,6 +4,7 @@ import { ApiService } from '../../service/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../service/loader.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +12,7 @@ import { LoaderService } from '../../service/loader.service';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
-  registerForm: FormGroup;
+  ReportForm: FormGroup;
   submitted = false;
   userAuth;
   locations;
@@ -19,9 +20,9 @@ export class DashboardPage implements OnInit {
     this.menu.enable(true);
     const data = JSON.parse(localStorage.getItem('authBPN'));
     this.userAuth = data;
-    this.registerForm = this.formBuilder.group({
+    this.ReportForm = this.formBuilder.group({
       'dtreport' : [null, Validators.required],
-      'location' : [null, [Validators.required]],
+      'lokasi' : [null, [Validators.required]],
       'terukur' : [null, Validators.required],
       'tergambar' : [null, Validators.required],
       'kkp' : [null, Validators.required],
@@ -31,13 +32,22 @@ export class DashboardPage implements OnInit {
       'su' : [null, Validators.required],
       'pengumuman' : [null, Validators.required],
       'pengesahan' : [null, Validators.required],
-      'keterangan' : [null, Validators.required],
+      'keterangan' : null
     });
    }
+
+  get f() { return this.ReportForm.controls; }
+
 
   ngOnInit() {
     this.getLocation();
   }
+
+/*   RadioLocation(event) {
+    this.ReportForm.patchValue({
+      lokasi : event.detail.value
+    })
+    } */
 
   getLocation(){
     this.apiService.getDataAuth('get-location', this.userAuth['access_token']).subscribe(res => {
@@ -51,6 +61,25 @@ export class DashboardPage implements OnInit {
     }, (err) => {
  
     });
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    if (this.ReportForm.invalid) {
+        return;
+    }
+    this.ReportForm.patchValue({
+      dtreport : formatDate(this.ReportForm.value.dtreport,'yyyy-MM-dd', 'en'),
+    })
+    console.log(this.ReportForm.value)
+    this.apiService.postDataAuth(this.ReportForm.value, 'report', this.userAuth['access_token']).subscribe(res => {
+      console.log(res)
+      if(res.status == "1"){
+       
+      }
+     
+    });
+
   }
 
 }

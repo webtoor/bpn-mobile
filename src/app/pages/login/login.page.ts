@@ -26,6 +26,12 @@ export class LoginPage implements OnInit {
     });
   }
 
+  ionViewWillEnter() {
+    if(localStorage.getItem('authBPN') ){
+      this.router.navigate(['/dashboard'], {replaceUrl: true});
+    }
+  }
+
   onSubmit() {
     this.submitted = true;
     if (this.loginForm.invalid) {

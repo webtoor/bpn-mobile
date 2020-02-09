@@ -42,17 +42,15 @@
     </ion-card-header>
   
     <ion-card-content>
-      <ion-list>
         <ion-radio-group formControlName="lokasi">
-          <ion-item *ngFor="let location of locations">
-          <ion-label style="font-size: 10px;">{{location.kotakab.name}}, {{location.kecamatan.name}}, {{location.desa.name}}</ion-label>
+          <ion-card *ngFor="let location of locations">
+          <ion-label> {{location.kotakab.name}}, {{location.kecamatan.name}}, {{location.desa.name}}, Target : {{location.target}}, Tim : {{location.tim}}</ion-label>
           <ion-radio slot="end" value="{{location.id}}"></ion-radio>
-        </ion-item>
+        </ion-card>
         <div *ngIf="submitted && f.lokasi.errors" class="invalid-feedback">
           <div *ngIf="f.lokasi.errors.required">Lokasi Tidak Boleh Kosong</div>
         </div>
         </ion-radio-group>
-      </ion-list>
     </ion-card-content>
   </ion-card>
 

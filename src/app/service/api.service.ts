@@ -12,7 +12,9 @@ let apiUrl = "http://localhost:8000/api/";
 export class ApiService {
 
   constructor(public http:HttpClient, public router : Router) { }
-
+  isAuthenticated(){
+    return localStorage.getItem('authBPN');
+  }
   getData(type){
     const httpOptions = {
       headers: new HttpHeaders({

@@ -43,10 +43,10 @@
   
     <ion-card-content>
         <ion-radio-group formControlName="lokasi">
-          <ion-card *ngFor="let location of locations">
-          <ion-label> {{location.kotakab.name}}, {{location.kecamatan.name}}, {{location.desa.name}}, Target : {{location.target}}, Tim : {{location.tim}}</ion-label>
+          <ion-item *ngFor="let location of locations">
+          <ion-label class="ion-text-wrap"> {{location.kotakab.name}}, {{location.kecamatan.name}}, {{location.desa.name}}, Target : {{location.target}}, Tim : {{location.tim}}</ion-label>
           <ion-radio slot="end" value="{{location.id}}"></ion-radio>
-        </ion-card>
+        </ion-item>
         <div *ngIf="submitted && f.lokasi.errors" class="invalid-feedback">
           <div *ngIf="f.lokasi.errors.required">Lokasi Tidak Boleh Kosong</div>
         </div>

@@ -8,6 +8,128 @@
 </ion-header>
 
 <ion-content>
-<!-- <form [formGroup]="EditReportForm" (ngSubmit)="onSubmit()">
-</form> -->
+<form [formGroup]="EditReportForm" (ngSubmit)="onSubmit()">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>I. Tanggal Pelaporan</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Jawaban Anda <ion-text color="danger">*</ion-text></ion-label>
+        <ion-datetime displayFormat="DD-MM-YYYY" min="2020-02-01" max="2025-01-01" formControlName="dtreport" readonly></ion-datetime>
+        <div *ngIf="submitted && f.dtreport.errors" class="invalid-feedback">
+          <div *ngIf="f.dtreport.errors.required">Tanggal Pelaporan Tidak Boleh Kosong</div>
+        </div>
+      </ion-item>
+      
+
+    </ion-card-content>
+  </ion-card>
+
+ 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>II. Lokasi</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <div style="color:black">
+        {{editReport?.kotakab.name}}, {{editReport?.kecamatan.name}}, {{editReport?.desa.name}}, Target : {{editReport?.target}}, Tim : {{editReport?.tim}}
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>III. Pengumpulan Data</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-item class="bottom">
+        <ion-label position="stacked">a) Terukur <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" formControlName="terukur"></ion-input>
+        <div *ngIf="submitted && f.terukur.errors" class="invalid-feedback">
+          <div *ngIf="f.terukur.errors.required">Terukur Tidak Boleh Kosong</div>
+        </div>
+      </ion-item>
+
+      <ion-item class="bottom">
+        <ion-label position="stacked">b) Tergambar <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" formControlName="tergambar"></ion-input>
+        <div *ngIf="submitted && f.tergambar.errors" class="invalid-feedback">
+          <div *ngIf="f.tergambar.errors.required">Tergambar Tidak Boleh Kosong</div>
+        </div>
+      </ion-item>
+
+
+      <ion-item class="bottom">
+        <ion-label position="stacked">c) Entri KKP <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" formControlName="kkp"></ion-input>
+        <div *ngIf="submitted && f.kkp.errors" class="invalid-feedback">
+          <div *ngIf="f.kkp.errors.required">Entri KKP Tidak Boleh Kosong</div>
+        </div>
+      </ion-item>
+
+      <ion-item class="bottom">
+        <ion-label position="stacked">d) Pengukuran <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" formControlName="pengukuran"></ion-input>
+        <div *ngIf="submitted && f.pengukuran.errors" class="invalid-feedback">
+          <div *ngIf="f.pengukuran.errors.required">Pengukuran Tidak Boleh Kosong</div>
+        </div>
+      </ion-item>
+
+      <ion-item class="bottom">
+        <ion-label position="stacked">e) Pemetaan <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" formControlName="pemetaan"></ion-input>
+        <div *ngIf="submitted && f.pemetaan.errors" class="invalid-feedback">
+          <div *ngIf="f.pemetaan.errors.required">Pemetaan Tidak Boleh Kosong</div>
+        </div>
+      </ion-item>
+
+       <ion-item class="bottom">
+        <ion-label position="stacked">f) PBT <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" formControlName="pbt"></ion-input>
+        <div *ngIf="submitted && f.pbt.errors" class="invalid-feedback">
+          <div *ngIf="f.pbt.errors.required">PBT Tidak Boleh Kosong</div>
+        </div>
+      </ion-item>
+
+      <ion-item class="bottom">
+        <ion-label position="stacked">g) SU <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" formControlName="su"></ion-input>
+        <div *ngIf="submitted && f.su.errors" class="invalid-feedback">
+          <div *ngIf="f.su.errors.required">SU Tidak Boleh Kosong</div>
+        </div>
+      </ion-item>
+
+      <ion-item class="bottom">
+        <ion-label position="stacked">h) Pengumuman <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" formControlName="pengumuman"></ion-input>
+        <div *ngIf="submitted && f.pengumuman.errors" class="invalid-feedback">
+          <div *ngIf="f.pengumuman.errors.required">Pengumuman Tidak Boleh Kosong</div>
+        </div>
+      </ion-item>
+
+      <ion-item class="bottom">
+        <ion-label position="stacked">i) Pengesahan <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" formControlName="pengesahan"></ion-input>
+        <div *ngIf="submitted && f.pengesahan.errors" class="invalid-feedback">
+          <div *ngIf="f.pengesahan.errors.required">Pengesahan Tidak Boleh Kosong</div>
+        </div>
+      </ion-item>
+
+      <ion-item class="bottom">
+        <ion-label position="stacked">j) Keterangan </ion-label>
+        <ion-textarea rows="3" cols="20" placeholder="Masukan Keterangan" formControlName="keterangan"></ion-textarea>
+      </ion-item>
+
+    </ion-card-content>
+
+  </ion-card>
+  <div class="ion-text-center" style="margin-top:10px; padding: 5px;">
+    <ion-button color="tertiary" expand="block" type="submit" style="height:40px">UPDATE</ion-button>
+    </div>
+    </form>
 </ion-content>

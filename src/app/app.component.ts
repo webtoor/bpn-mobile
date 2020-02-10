@@ -14,7 +14,12 @@ export class AppComponent {
     {
       title: 'Report Harian',
       url: '/dashboard',
-      icon: 'home'
+      icon: 'bookmark'
+    },
+    {
+      title: 'Report History',
+      url: '/my-report',
+      icon: 'md-clipboard'
     },
   ];
 

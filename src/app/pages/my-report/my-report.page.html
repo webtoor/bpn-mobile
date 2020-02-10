@@ -1,9 +1,41 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>my-report</ion-title>
+  <ion-toolbar color="tertiary">
+     <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Report History</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
+<ion-content>
+  <div *ngFor="let data of myReport">
+  <ion-card>
+    <ion-item>
+      <ion-icon name="calendar" slot="start"></ion-icon>
+      <ion-label> {{data.dtreport | date: "dd MMM yyyy" }}</ion-label>
+      <ion-button slot="end" color="tertiary">Edit</ion-button>
+    </ion-item>
+  
+    <ion-card-content>
+      <div style="padding:5px;">
+        {{data.project_location.kotakab.name}}, {{data.project_location.kecamatan.name}}, {{data.project_location.desa.name}}, Target : {{data.project_location.target}}, Tim : {{data.project_location.tim}}
+      </div>
+
+      <div style="padding:5px;"> Terukur : {{data.terukur}}</div>
+      <div style="padding:5px;"> Tergambar : {{data.tergambar}}</div>
+      <div style="padding:5px;"> KKP : {{data.kkp}} </div>
+      <div style="padding:5px;"> Pengukuran : {{data.pengukuran}}</div>
+      <div style="padding:5px;"> Pemetaan : {{data.pemetaan}}</div>
+      <div style="padding:5px;"> PBT : {{data.pbt}}</div>
+      <div style="padding:5px;"> SU : {{data.su}}</div>
+      <div style="padding:5px;"> Pengumuman : {{data.pengukuran}}</div>
+      <div style="padding:5px;"> Pengesahan : {{data.terukur}}</div>
+      <div style="padding:5px;"> Keterangan : {{data.keterangan}}</div>
+
+    </ion-card-content>
+  
+    
+  </ion-card>
+</div>
 </ion-content>

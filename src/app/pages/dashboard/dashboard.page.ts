@@ -16,7 +16,7 @@ export class DashboardPage implements OnInit {
   submitted = false;
   userAuth;
   locations;
-  constructor(private formBuilder: FormBuilder, public loading: LoaderService, public menu : MenuController, public apiService : ApiService) {
+  constructor(public formBuilder: FormBuilder, public loading: LoaderService, public menu : MenuController, public apiService : ApiService) {
     this.menu.enable(true);
     const data = JSON.parse(localStorage.getItem('authBPN'));
     this.userAuth = data;

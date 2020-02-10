@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../service/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-report',
@@ -9,7 +10,7 @@ import { ApiService } from '../../service/api.service';
 export class MyReportPage implements OnInit {
   userAuth;
   myReport;
-  constructor(public apiService : ApiService) { 
+  constructor(private router:Router, public apiService : ApiService) { 
     const data = JSON.parse(localStorage.getItem('authBPN'));
     this.userAuth = data;
   }
@@ -31,6 +32,10 @@ export class MyReportPage implements OnInit {
     }, (err) => {
  
     });
+  }
+
+  EditReport(id){
+    this.router.navigate(['my-report/edit-report', id])
   }
 
 }

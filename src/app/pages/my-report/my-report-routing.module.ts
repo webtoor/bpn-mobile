@@ -9,7 +9,7 @@ const routes: Routes = [
     component: MyReportPage
   },
   {
-    path: 'edit-report',
+    path: 'edit-report/:id',
     loadChildren: () => import('./edit-report/edit-report.module').then( m => m.EditReportPageModule)
   }
 ];

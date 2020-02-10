@@ -12,7 +12,7 @@ export class LoaderService {
   async present() {
     this.isLoading = true;
     return await this.loadingController.create({
-      message: 'Please wait...',
+      message: 'Processing Server Request',
       duration: 3000,
     }).then(a => {
       a.present().then(() => {

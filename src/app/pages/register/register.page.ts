@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from '../service/api.service';
-import { LoaderService } from '../service/loader.service';
+import { ApiService } from '../../service/api.service';
+import { LoaderService } from '../../service/loader.service';
 
 import { ToastController } from '@ionic/angular';
 
@@ -71,24 +71,31 @@ export class RegisterPage implements OnInit {
         this.presentToast(pes.toString(), 'bottom')
         this.loading.dismiss();
       }
+    }, (err) => {
+      this.presentToast("Terjadi Kesalahan, silakan coba lagi nanti :(", "bottom");
+
     });
   }
 
   getKotaKab(){
+    this.loading.present();
     this.apiService.getData('kota-kabupaten').subscribe(res => {
      //console.log(res)
       if(res['status'] == 1){
         this.kotakab = res['data']
-      
+        this.loading.dismiss();
+
         //console.log(this.kotakab)
       }
     
     }, (err) => {
- 
+      this.presentToast("Terjadi Kesalahan, silakan coba lagi nanti :(", "bottom");
+
     });
   }
 
   getKecamatan(event){
+    this.loading.present();
     console.log(event.detail.value)
     this.kecamatanIsEnabled = true;
     this.desaIsEnabled = true;
@@ -98,17 +105,20 @@ export class RegisterPage implements OnInit {
         this.kecamatanIsEnabled = false;
         this.kecamatan = res['data']
         this.desaIsEnabled = true;
+        this.loading.dismiss();
 
         //console.log(this.kotakab)
       }
       
      
      }, (err) => {
-  
+      this.presentToast("Terjadi Kesalahan, silakan coba lagi nanti :(", "bottom");
+
      });
   }
 
   getDesa(event){
+    this.loading.present();
     console.log(event.detail.value)
     this.desaIsEnabled = true;
     this.desa = null;
@@ -117,11 +127,14 @@ export class RegisterPage implements OnInit {
         this.desaIsEnabled = false;
         this.desa = res['data']
         console.log(res)
+        this.loading.dismiss();
+
       }
       
      
      }, (err) => {
-  
+      this.presentToast("Terjadi Kesalahan, silakan coba lagi nanti :(", "bottom");
+
      });
   }
 
@@ -132,6 +145,10 @@ export class RegisterPage implements OnInit {
       position: positions
     });
     toast.present();
+  }
+
+  loginPage(){
+    this.router.navigate(['/login' ], {replaceUrl: true});
   }
 
 }

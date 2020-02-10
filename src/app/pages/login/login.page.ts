@@ -65,4 +65,8 @@ export class LoginPage implements OnInit {
     toast.present();
   }
 
+  registerPage(){
+    this.router.navigate(['/register' ], {replaceUrl: true});
+  }
+
 }

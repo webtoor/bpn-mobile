@@ -5,6 +5,7 @@ import { map, catchError } from 'rxjs/operators';
 import { Router} from '@angular/router';
 
 let apiUrl = "http://localhost:8000/api/"; 
+/* let apiUrl = "https://monevkanwiljabar.com/api/";  */
 
 @Injectable({
   providedIn: 'root'

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../service/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { LoaderService } from '../../../service/loader.service';
 
 @Component({
   selector: 'app-edit-report',
@@ -14,7 +15,7 @@ export class EditReportPage implements OnInit {
   userAuth;
   editReport;
   report_id;
-  constructor(public router:Router, public route : ActivatedRoute, public apiService : ApiService, private formBuilder: FormBuilder) {
+  constructor(public loading: LoaderService, public router:Router, public route : ActivatedRoute, public apiService : ApiService, private formBuilder: FormBuilder) {
     this.report_id = this.route.snapshot.paramMap.get('id');
     const data = JSON.parse(localStorage.getItem('authBPN'));
     this.userAuth = data;
@@ -39,6 +40,7 @@ export class EditReportPage implements OnInit {
   }
 
   getSingleReport(){
+    this.loading.present();
     this.apiService.getDataAuth('single-report/' + this.report_id, this.userAuth['access_token']).subscribe(res => {
      console.log(res['data']['project_location'])
       if(res['status'] == "1"){
@@ -57,6 +59,7 @@ export class EditReportPage implements OnInit {
           'pengesahan' : res['data']['pengesahan'],
           'keterangan' : res['data']['keterangan']
         }) 
+        this.loading.dismiss();
       }
     
     }, (err) => {

@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card class="ion-text-center">
+  <ion-card class="ion-text-center" style="background-color: white;">
     <ion-card-content class="ion-text-center">
       <div slot="end" style="width: 300px; height: 300px;">
         <img src="assets/logo/bpn_logo.png" height="300px;" width="300px;" />
@@ -17,7 +17,7 @@
   </ion-card>
   <form [formGroup]="ReportForm" (ngSubmit)="onSubmit()">
 
-  <ion-card>
+  <ion-card style="background-color: white;">
     <ion-card-header>
       <ion-card-subtitle>I. Tanggal Pelaporan <ion-text color="danger">*Wajib</ion-text></ion-card-subtitle>
     </ion-card-header>
@@ -36,7 +36,7 @@
   </ion-card>
 
  
-  <ion-card>
+  <ion-card style="background-color: white;">
     <ion-card-header>
       <ion-card-subtitle>II. Lokasi <ion-text color="danger">*Wajib</ion-text></ion-card-subtitle>
     </ion-card-header>
@@ -54,15 +54,15 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
+  <ion-card style="background-color: white;">
     <ion-card-header>
       <ion-card-subtitle>III. Pengumpulan Data</ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content>
-      <ion-item class="bottom">
+      <ion-item class="bottom" style="background-color: white;">
         <ion-label position="stacked">a) Terukur <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" placeholder="Jawaban Anda" formControlName="terukur"></ion-input>
+        <ion-input type="number" placeholder="Jawaban Anda" formControlName="terukur" ></ion-input>
         <div *ngIf="submitted && f.terukur.errors" class="invalid-feedback">
           <div *ngIf="f.terukur.errors.required">Terukur Tidak Boleh Kosong</div>
         </div>

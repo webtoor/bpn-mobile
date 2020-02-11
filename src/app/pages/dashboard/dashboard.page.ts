@@ -86,17 +86,21 @@ export class DashboardPage implements OnInit {
           text: 'Ya',
           handler: () => {
             console.log('Confirm Okay');
+            this.loading.present();
             this.apiService.postDataAuth(this.ReportForm.value, 'report', this.userAuth['access_token']).subscribe(res => {
               console.log(res)
              if(res.status == '1'){
-                this.presentToast('Terimakasih atas Laporan Anda', 'top')
+                this.presentToast('Submit Laporan Berhasil, Terimakasih atas Laporan Anda', 'bottom')
                 console.log(res.message);
-              }else{
-                this.presentToast('Maaf. Terjadi kesalahan, Coba beberapa saat lagi :(', 'bottom')
+                window.location.reload();
+                this.loading.dismiss();
+              }else if(res.status == '0'){
+                this.presentToast(res.message, 'bottom')
+                this.loading.dismiss();
               }
             }, (err) => {
               this.presentToast('Maaf. Terjadi kesalahan, Coba beberapa saat lagi :(', 'bottom')
-              console.log(err);
+              this.loading.dismiss();
             });
           }
         }
@@ -109,7 +113,7 @@ export class DashboardPage implements OnInit {
   async presentToast(msg, positions) {
     const toast = await this.toastController.create({
       message: msg,
-      duration: 3000,
+      duration: 5000,
       position: positions
     });
     toast.present();

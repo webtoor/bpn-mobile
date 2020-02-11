@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 
-import { Platform, ToastController, Events, AlertController, } from '@ionic/angular';
+import { Platform, ToastController, Events, AlertController} from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
@@ -61,7 +61,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
           navigator['app'].exitApp();
           this.counts = 0;
         }
-        this.presentToast('Tekan sekali lagi untuk keluar')
+        this.presentToast('Tekan sekali lagi untuk keluar', "bottom")
       }else{
         this.counts = 0
         window.history.back();
@@ -99,11 +99,11 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   }
 
 
-  async presentToast(msg) {
+  async presentToast(msg, positions) {
     const toast = await this.toastController.create({
       message: msg,
       duration: 3000,
-      position: 'bottom'
+      position: positions
     });
     toast.present();
   }

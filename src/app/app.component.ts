@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, ToastController, Events, AlertController, } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit, OnDestroy {
   public appPages = [
     {
       title: 'Report Harian',
@@ -23,13 +23,25 @@ export class AppComponent {
       icon: 'md-clipboard'
     },
   ];
-
+  emailShows
+  backButtonSubscription
+  counts :number = 0;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public router : Router
+    public router : Router,
+    public events : Events,
+    public alertController: AlertController,
+    public toastController : ToastController
   ) {
+    const dataUser = JSON.parse(localStorage.getItem('authBPN'));
+    if(dataUser){
+      this.emailShows = dataUser.email;
+      }
+    events.subscribe('email', (email) => {
+      this.emailShows = email;
+    });
     this.initializeApp();
   }
 
@@ -41,9 +53,58 @@ export class AppComponent {
       this.statusBar.styleBlackTranslucent();
     });
   }
+  ngAfterViewInit() {
+    this.backButtonSubscription = this.platform.backButton.subscribe(() => {
+      this.counts++
+      if((window.location.pathname == '/login') || (window.location.pathname == '/register') || (window.location.pathname == '/dashboard')){
+        if(this.counts == 2){
+          navigator['app'].exitApp();
+          this.counts = 0;
+        }
+        this.presentToast('Tekan sekali lagi untuk keluar')
+      }else{
+        this.counts = 0
+        window.history.back();
+      }
+    }); 
+  }
 
-  logout(){
-    localStorage.clear();
-    this.router.navigate(['/login'], {replaceUrl: true})
+  ngOnDestroy() {
+    this.backButtonSubscription.unsubscribe();
+  }
+
+  async logout(){
+    const alert = await this.alertController.create({
+      header: 'Konfirmasi',
+      message: 'Klik OK untuk Logout?',
+      buttons: [
+        {
+          text: 'CANCEL',
+          handler: () => {
+            
+          }
+        },
+       {
+          text: 'OK',
+          handler: () => {
+            console.log('Confirm Okay');
+            localStorage.clear();
+            this.router.navigate(['/login'], {replaceUrl: true})
+          }
+        }
+      ]
+    });
+    await alert.present();
+
+  }
+
+
+  async presentToast(msg) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 3000,
+      position: 'bottom'
+    });
+    toast.present();
   }
 }

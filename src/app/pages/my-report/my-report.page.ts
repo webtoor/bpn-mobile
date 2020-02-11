@@ -27,14 +27,14 @@ export class MyReportPage implements OnInit {
   getReport(){
     this.loading.present();
     this.apiService.getDataAuth('report', this.userAuth['access_token']).subscribe(res => {
-     console.log(res)
+     console.log(res['status'])
       if(res['status'] == "1"){
         this.myReport = res['data'];
         this.loading.dismiss();
       }
     
     }, (err) => {
- 
+      console.log(err.message)
     });
   }
 

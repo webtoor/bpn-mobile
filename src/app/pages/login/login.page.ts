@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, Events } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../../service/api.service';
@@ -15,7 +15,7 @@ import { ToastController } from '@ionic/angular';
 export class LoginPage implements OnInit {
   loginForm: FormGroup;
   submitted = false;
-  constructor(public loading: LoaderService, public menu: MenuController, private formBuilder: FormBuilder, private router:Router, public apiService : ApiService, public toastController: ToastController) {
+  constructor(public events : Events, public loading: LoaderService, public menu: MenuController, private formBuilder: FormBuilder, private router:Router, public apiService : ApiService, public toastController: ToastController) {
     this.menu.enable(false);
    }
 
@@ -42,9 +42,9 @@ export class LoginPage implements OnInit {
     this.apiService.login(this.loginForm.value, 'login').subscribe(res => {
       console.log(res)
       if(res.token_type == 'Bearer'){
-        this.router.navigate(['/dashboard'], {replaceUrl: true})
+        this.events.publish('email', res['email']);
         localStorage.setItem('authBPN', JSON.stringify(res));
-
+        this.router.navigate(['/dashboard'], {replaceUrl: true})
         this.loading.dismiss();
       }
       if(res.error){

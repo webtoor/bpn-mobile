@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, ToastController  } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../../service/api.service';
 import { LoaderService } from '../../service/loader.service';
-
-import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -55,11 +53,11 @@ export class RegisterPage implements OnInit {
     })
     console.log(this.registerForm.value)
     this.loading.present();
-
     this.apiService.register(this.registerForm.value, 'register').subscribe(res => {
       console.log(res)
       if(res.status == "1"){
         this.presentToast('Terima Kasih, Anda berhasil Register', 'top')
+        this.router.navigate(['/login'], {replaceUrl : true})
         this.loading.dismiss();
       }
       if(res.error){

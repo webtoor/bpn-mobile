@@ -1,9 +1,15 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
-      <ion-header>
-        <ion-toolbar color="tertiary">
-          <ion-title>Menu</ion-title>
+      <ion-header no-border>
+        <ion-toolbar style="height: 180px;" color="tertiary">
+          <img src="/assets/logo/bpn_logo.png" alt="" style="height:70px;
+          margin-top: 20px;
+          margin-left: 20px;
+          width: 25%;"/>   
+           <ion-item style="margin-top:40px;" color="white" no-border lines="none">
+              <b>{{emailShows}}</b>
+        </ion-item>  
         </ion-toolbar>
       </ion-header>
       <ion-content>
@@ -24,6 +30,12 @@
           </ion-item>
         </ion-list>
       </ion-content>
+      <ion-footer no-border>
+        <div class="ion-text-center">
+         <p style="font-size:10px;">2020 © BPN</p>
+         <p style="font-size:10px; margin-top:-5px;">vBeta</p>
+        </div>
+      </ion-footer>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>

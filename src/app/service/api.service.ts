@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Router} from '@angular/router';
 
-let apiUrl = "http://localhost:8000/api/"; 
+let apiUrl = "http://127.0.0.1:8000/api/"; 
 /* let apiUrl = "https://monevkanwiljabar.com/api/";  */
+/* let apiUrl = "http://192.168.1.7:8000/api/";  */
 
 @Injectable({
   providedIn: 'root'
@@ -74,15 +75,11 @@ export class ApiService {
     return this.http.get(apiUrl+type, httpOptions)
     .pipe(
       map(res => {
-        if (res['status'] == '5') {
-          throw new Error('Value expected!');
-        }
-       /*  if(res['status'] == 401){
+        if(res['status'] == 401){
           localStorage.clear();
           this.router.navigate(['login'], {replaceUrl : true})
-        } */
-        //console.log(res['data'])
-        return res;
+        }
+        return res
       }),
       catchError(this.handleError)
    );
@@ -98,7 +95,13 @@ export class ApiService {
     };
     return this.http.post<any>(apiUrl+type, data, httpOptions)
     .pipe(
-      
+      map(res => {
+        if(res['status'] == 401){
+          localStorage.clear();
+          this.router.navigate(['login'], {replaceUrl : true})
+        }
+        return res
+      })
     );
   }  
 }

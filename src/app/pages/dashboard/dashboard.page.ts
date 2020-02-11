@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, AlertController, ToastController } from '@ionic/angular';
 import { ApiService } from '../../service/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,7 +16,7 @@ export class DashboardPage implements OnInit {
   submitted = false;
   userAuth;
   locations;
-  constructor(public formBuilder: FormBuilder, public loading: LoaderService, public menu : MenuController, public apiService : ApiService) {
+  constructor(public router:Router, public toastController: ToastController, public alertController: AlertController, public formBuilder: FormBuilder, public loading: LoaderService, public menu : MenuController, public apiService : ApiService) {
     this.menu.enable(true);
     const data = JSON.parse(localStorage.getItem('authBPN'));
     this.userAuth = data;
@@ -63,7 +63,7 @@ export class DashboardPage implements OnInit {
     });
   }
 
-  onSubmit() {
+  async  onSubmit() {
     this.submitted = true;
     if (this.ReportForm.invalid) {
         return;
@@ -72,14 +72,47 @@ export class DashboardPage implements OnInit {
       dtreport : formatDate(this.ReportForm.value.dtreport,'yyyy-MM-dd', 'en'),
     })
     console.log(this.ReportForm.value)
-    this.apiService.postDataAuth(this.ReportForm.value, 'report', this.userAuth['access_token']).subscribe(res => {
-      console.log(res)
-      if(res.status == "1"){
-       
-      }
-     
+    const alert = await this.alertController.create({
+      header: 'Konfirmasi',
+      message: 'Anda yakin dengan isi data diatas?',
+      buttons: [
+        {
+          text: 'Periksa Kembali',
+          handler: () => {
+            
+          }
+        },
+       {
+          text: 'Ya',
+          handler: () => {
+            console.log('Confirm Okay');
+            this.apiService.postDataAuth(this.ReportForm.value, 'report', this.userAuth['access_token']).subscribe(res => {
+              console.log(res)
+             if(res.status == '1'){
+                this.presentToast('Terimakasih atas Laporan Anda', 'top')
+                console.log(res.message);
+              }else{
+                this.presentToast('Maaf. Terjadi kesalahan, Coba beberapa saat lagi :(', 'bottom')
+              }
+            }, (err) => {
+              this.presentToast('Maaf. Terjadi kesalahan, Coba beberapa saat lagi :(', 'bottom')
+              console.log(err);
+            });
+          }
+        }
+      ]
     });
+    await alert.present();
 
+  }
+
+  async presentToast(msg, positions) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 3000,
+      position: positions
+    });
+    toast.present();
   }
 
 }

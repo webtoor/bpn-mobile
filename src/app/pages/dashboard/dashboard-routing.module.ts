@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardPage
+  },
+  {
+    path: 'add-location',
+    loadChildren: () => import('./add-location/add-location.module').then( m => m.AddLocationPageModule)
   }
 ];
 

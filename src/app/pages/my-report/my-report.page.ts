@@ -27,7 +27,7 @@ export class MyReportPage implements OnInit {
   getReport(){
     this.loading.present();
     this.apiService.getDataAuth('report', this.userAuth['access_token']).subscribe(res => {
-     console.log(res['status'])
+     console.log(res)
       if(res['status'] == "1"){
         this.myReport = res['data'];
         this.loading.dismiss();

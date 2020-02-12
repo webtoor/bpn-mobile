@@ -24,13 +24,11 @@ export class EditReportPage implements OnInit {
       'lokasi' : [null, [Validators.required]],
       'terukur' : [null, Validators.required],
       'tergambar' : [null, Validators.required],
-      'kkp' : [null, Validators.required],
-      'pengukuran' : [null, Validators.required],
-      'pemetaan' : [null, Validators.required],
-      'pbt' : [null, [Validators.required]],
-      'su' : [null, Validators.required],
-      'pengumuman' : [null, Validators.required],
-      'pengesahan' : [null, Validators.required],
+      'k4' : [null, Validators.required],
+      'puldadis' : [null, Validators.required],
+      'aplikasi_fisik_pbt' : [null, Validators.required],
+      'aplikasi_fisik_k4' : [null, [Validators.required]],
+      'aplikasi_fisik_yuridis' : [null, Validators.required],
       'keterangan' : null
     });
    }
@@ -50,13 +48,11 @@ export class EditReportPage implements OnInit {
           'lokasi' : res['data']['project_location_id'],
           'terukur' : res['data']['terukur'],
           'tergambar' : res['data']['tergambar'],
-          'kkp' : res['data']['kkp'],
-          'pengukuran' : res['data']['pengukuran'],
-          'pemetaan' : res['data']['pemetaan'],
-          'pbt' : res['data']['pbt'],
-          'su' : res['data']['su'],
-          'pengumuman' : res['data']['pengumuman'],
-          'pengesahan' : res['data']['pengesahan'],
+          'k4' : res['data']['k4'],
+          'puldadis' : res['data']['puldadis'],
+          'aplikasi_fisik_pbt' : res['data']['aplikasi_fisik_pbt'],
+          'aplikasi_fisik_k4' : res['data']['aplikasi_fisik_k4'],
+          'aplikasi_fisik_yuridis' : res['data']['aplikasi_fisik_yuridis'],
           'keterangan' : res['data']['keterangan']
         }) 
         this.loading.dismiss();

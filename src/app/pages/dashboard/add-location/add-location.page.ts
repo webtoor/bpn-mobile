@@ -27,7 +27,9 @@ export class AddLocationPage implements OnInit {
       'kotakab' : [null, Validators.required],
       'kecamatan' : [null, Validators.required],
       'desa' : [null, Validators.required],
-      'target' : [null, Validators.required],
+      'target_pbt' : [null, Validators.required],
+      'target_shat' : [null, Validators.required],
+      'target_k4' : [null, Validators.required],
     });
    }
 

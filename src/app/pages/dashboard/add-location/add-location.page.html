@@ -44,10 +44,23 @@
         </div>
     </ion-item>
     <ion-item class="bottom">
-      <ion-label position="stacked">Target <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input type="number" placeholder="Contoh : 500" formControlName="target"></ion-input>
-      <div *ngIf="submitted && f.target.errors" class="invalid-feedback">
-        <div *ngIf="f.target.errors.required">Target tidak boleh kosong</div>
+      <ion-label position="stacked">Target PBT<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="number" placeholder="Contoh : 500" formControlName="target_pbt"></ion-input>
+      <div *ngIf="submitted && f.target_pbt.errors" class="invalid-feedback">
+        <div *ngIf="f.target_pbt.errors.required">Target PBT tidak boleh kosong</div>
+        </div>
+    </ion-item>
+    <ion-item class="bottom">
+      <ion-label position="stacked">Target SHAT<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="number" placeholder="Contoh : 500" formControlName="target_shat"></ion-input>
+      <div *ngIf="submitted && f.target_shat.errors" class="invalid-feedback">
+        <div *ngIf="f.target_shat.errors.required">Target SHAT tidak boleh kosong</div>
+        </div>
+    </ion-item><ion-item class="bottom">
+      <ion-label position="stacked">Target K4<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="number" placeholder="Contoh : 100" formControlName="target_k4"></ion-input>
+      <div *ngIf="submitted && f.target_k4.errors" class="invalid-feedback">
+        <div *ngIf="f.target_k4.errors.required">Target K4 tidak boleh kosong</div>
         </div>
     </ion-item>
     <div class="ion-text-center" style="margin-top:40px">

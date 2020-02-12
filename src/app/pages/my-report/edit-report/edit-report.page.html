@@ -36,98 +36,121 @@
   
     <ion-card-content>
       <div style="color:black">
-        {{editReport?.kotakab.name}}, {{editReport?.kecamatan.name}}, {{editReport?.desa.name}}, Target : {{editReport?.target}}, Tim : {{editReport?.tim}}
+        {{editReport?.kotakab.name}}, {{editReport?.kecamatan.name}}, {{editReport?.desa.name}}, Target PBT : {{editReport?.target_pbt}}, Target SHAT : {{editReport?.target_shat}}, Target K4 : {{editReport?.target_k4}}, Tim : {{editReport?.tim}}
       </div>
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
+  <ion-card style="background-color: white;">
     <ion-card-header>
-      <ion-card-subtitle>III. Pengumpulan Data</ion-card-subtitle>
+      <ion-card-subtitle>a. Terukur <ion-text color="danger">*Wajib</ion-text></ion-card-subtitle>
     </ion-card-header>
-  
     <ion-card-content>
-      <ion-item class="bottom">
+      <ion-item class="bottom" style="background-color: white;">
         <ion-label position="stacked">a) Terukur <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" formControlName="terukur"></ion-input>
+        <ion-input type="number" placeholder="Jawaban Anda" formControlName="terukur" ></ion-input>
         <div *ngIf="submitted && f.terukur.errors" class="invalid-feedback">
           <div *ngIf="f.terukur.errors.required">Terukur Tidak Boleh Kosong</div>
         </div>
       </ion-item>
 
-      <ion-item class="bottom">
-        <ion-label position="stacked">b) Tergambar <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" formControlName="tergambar"></ion-input>
+  </ion-card-content>
+    </ion-card>
+
+  <ion-card style="background-color: white;">
+    <ion-card-header>
+      <ion-card-subtitle>b. Tergambar <ion-text color="danger">*Wajib</ion-text></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item class="bottom" style="background-color: white;">
+        <ion-label position="stacked">b) Tergambar<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" placeholder="Jawaban Anda" formControlName="tergambar" ></ion-input>
         <div *ngIf="submitted && f.tergambar.errors" class="invalid-feedback">
           <div *ngIf="f.tergambar.errors.required">Tergambar Tidak Boleh Kosong</div>
         </div>
       </ion-item>
 
+  </ion-card-content>
+    </ion-card>
 
-      <ion-item class="bottom">
-        <ion-label position="stacked">c) Entri KKP <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" formControlName="kkp"></ion-input>
-        <div *ngIf="submitted && f.kkp.errors" class="invalid-feedback">
-          <div *ngIf="f.kkp.errors.required">Entri KKP Tidak Boleh Kosong</div>
+    <ion-card style="background-color: white;">
+      <ion-card-header>
+        <ion-card-subtitle>c. K4 <ion-text color="danger">*Wajib</ion-text></ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item class="bottom" style="background-color: white;">
+          <ion-label position="stacked">c) K4<ion-text color="danger">*</ion-text></ion-label>
+          <ion-input type="number" placeholder="Jawaban Anda" formControlName="k4" ></ion-input>
+          <div *ngIf="submitted && f.k4.errors" class="invalid-feedback">
+            <div *ngIf="f.k4.errors.required">K4 Tidak Boleh Kosong</div>
+          </div>
+        </ion-item>
+  
+    </ion-card-content>
+      </ion-card>
+
+      <ion-card style="background-color: white;">
+        <ion-card-header>
+          <ion-card-subtitle>d. Puldadis <ion-text color="danger">*Wajib</ion-text></ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item class="bottom" style="background-color: white;">
+            <ion-label position="stacked">d) Puldadis<ion-text color="danger">*</ion-text></ion-label>
+            <ion-input type="number" placeholder="Jawaban Anda" formControlName="puldadis" ></ion-input>
+            <div *ngIf="submitted && f.puldadis.errors" class="invalid-feedback">
+              <div *ngIf="f.puldadis.errors.required">Puldadis Tidak Boleh Kosong</div>
+            </div>
+          </ion-item>
+    
+      </ion-card-content>
+        </ion-card>
+
+  <ion-card style="background-color: white;">
+    <ion-card-header>
+      <ion-card-subtitle>III. Entry Aplikasi <ion-text color="danger">*Wajib</ion-text></ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-item class="bottom" style="background-color: white;">
+        <ion-label position="stacked">a) Aplikasi Fisik (PBT) <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" placeholder="Jawaban Anda" formControlName="aplikasi_fisik_pbt" ></ion-input>
+        <div *ngIf="submitted && f.aplikasi_fisik_pbt.errors" class="invalid-feedback">
+          <div *ngIf="f.aplikasi_fisik_pbt.errors.required">Aplikasi Fisik (PBT) Tidak Boleh Kosong</div>
         </div>
       </ion-item>
 
       <ion-item class="bottom">
-        <ion-label position="stacked">d) Pengukuran <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" formControlName="pengukuran"></ion-input>
-        <div *ngIf="submitted && f.pengukuran.errors" class="invalid-feedback">
-          <div *ngIf="f.pengukuran.errors.required">Pengukuran Tidak Boleh Kosong</div>
+        <ion-label position="stacked">b) Aplikasi Fisik (K4) <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" placeholder="Jawaban Anda" formControlName="aplikasi_fisik_k4"></ion-input>
+        <div *ngIf="submitted && f.aplikasi_fisik_k4.errors" class="invalid-feedback">
+          <div *ngIf="f.aplikasi_fisik_k4.errors.required">Aplikasi Fisik (K4) Tidak Boleh Kosong</div>
         </div>
       </ion-item>
+
 
       <ion-item class="bottom">
-        <ion-label position="stacked">e) Pemetaan <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" formControlName="pemetaan"></ion-input>
-        <div *ngIf="submitted && f.pemetaan.errors" class="invalid-feedback">
-          <div *ngIf="f.pemetaan.errors.required">Pemetaan Tidak Boleh Kosong</div>
+        <ion-label position="stacked">c) Aplikasi Yuridis <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" placeholder="Jawaban Anda" formControlName="aplikasi_fisik_yuridis"></ion-input>
+        <div *ngIf="submitted && f.aplikasi_fisik_yuridis.errors" class="invalid-feedback">
+          <div *ngIf="f.aplikasi_fisik_yuridis.errors.required">Aplikasi Yuridis Tidak Boleh Kosong</div>
         </div>
-      </ion-item>
-
-       <ion-item class="bottom">
-        <ion-label position="stacked">f) PBT <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" formControlName="pbt"></ion-input>
-        <div *ngIf="submitted && f.pbt.errors" class="invalid-feedback">
-          <div *ngIf="f.pbt.errors.required">PBT Tidak Boleh Kosong</div>
-        </div>
-      </ion-item>
-
-      <ion-item class="bottom">
-        <ion-label position="stacked">g) SU <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" formControlName="su"></ion-input>
-        <div *ngIf="submitted && f.su.errors" class="invalid-feedback">
-          <div *ngIf="f.su.errors.required">SU Tidak Boleh Kosong</div>
-        </div>
-      </ion-item>
-
-      <ion-item class="bottom">
-        <ion-label position="stacked">h) Pengumuman <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" formControlName="pengumuman"></ion-input>
-        <div *ngIf="submitted && f.pengumuman.errors" class="invalid-feedback">
-          <div *ngIf="f.pengumuman.errors.required">Pengumuman Tidak Boleh Kosong</div>
-        </div>
-      </ion-item>
-
-      <ion-item class="bottom">
-        <ion-label position="stacked">i) Pengesahan <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input type="number" formControlName="pengesahan"></ion-input>
-        <div *ngIf="submitted && f.pengesahan.errors" class="invalid-feedback">
-          <div *ngIf="f.pengesahan.errors.required">Pengesahan Tidak Boleh Kosong</div>
-        </div>
-      </ion-item>
-
-      <ion-item class="bottom">
-        <ion-label position="stacked">j) Keterangan </ion-label>
-        <ion-textarea rows="3" cols="20" placeholder="Masukan Keterangan" formControlName="keterangan"></ion-textarea>
       </ion-item>
 
     </ion-card-content>
 
   </ion-card>
+
+  <ion-card style="background-color: white;">
+    <ion-card-header>
+      <ion-card-subtitle>IV. Keterangan</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item class="bottom">
+        <ion-label position="stacked">Keterangan </ion-label>
+        <ion-textarea rows="4" cols="20" placeholder="Masukan Keterangan" formControlName="keterangan"></ion-textarea>
+      </ion-item>
+  </ion-card-content>
+    </ion-card>
   <div class="ion-text-center" style="margin-top:10px; padding: 5px;">
     <ion-button color="tertiary" expand="block" type="submit" style="height:40px">UPDATE</ion-button>
     </div>

@@ -119,4 +119,8 @@ export class DashboardPage implements OnInit {
     toast.present();
   }
 
+  addLocation(){
+    this.router.navigate(['/dashboard/add-location'], {replaceUrl : true})
+  }
+
 }

@@ -1,9 +1,57 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>add-location</ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Tambah Lokasi</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="ion-padding">
+  <form [formGroup]="AddLocationForm" (ngSubmit)="onSubmit()">
+    <ion-item class="bottom">
+      <ion-label position="stacked">Tim <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="number" placeholder="Contoh : 1" formControlName="tim"></ion-input>
+      <div *ngIf="submitted && f.tim.errors" class="invalid-feedback">
+        <div *ngIf="f.tim.errors.required">Tim tidak boleh kosong</div>
+        </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Kota/Kabupaten <ion-text color="danger">*</ion-text></ion-label>
+      <ion-select (ionChange)="getKecamatan($event)" interface="popover" placeholder="Pilih Kota/Kabupaten sesuai proyek Anda" formControlName="kotakab">
+      <ion-select-option *ngFor="let item of kotakab" value="{{item.id}}">{{item.name}}</ion-select-option>
+    </ion-select>
+    <div *ngIf="submitted && f.kotakab.errors" class="invalid-feedback">
+      <div *ngIf="f.kotakab.errors.required">Kota/Kabupaten tidak boleh kosong</div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Kecamatan <ion-text color="danger">*</ion-text></ion-label>
+      <ion-select disabled="{{kecamatanIsEnabled}}" (ionChange)="getDesa($event)" interface="popover" placeholder="Pilih Kecamatan sesuai proyek Anda" formControlName="kecamatan"> 
+        <ion-select-option *ngFor="let item of kecamatan" value="{{item.id}}">{{item.name}}</ion-select-option>
+      </ion-select>
+      <div *ngIf="submitted && f.kecamatan.errors" class="invalid-feedback">
+        <div *ngIf="f.kecamatan.errors.required">Kecamatan tidak boleh kosong</div>
+        </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Desa <ion-text color="danger">*</ion-text></ion-label>
+      <ion-select disabled="{{desaIsEnabled}}" interface="popover" placeholder="Pilih Kelurahan/Desa sesuai proyek Anda" formControlName="desa">
+        <ion-select-option *ngFor="let item of desa" value="{{item.id}}">{{item.name}}</ion-select-option>
+      </ion-select>
+      <div *ngIf="submitted && f.desa.errors" class="invalid-feedback">
+        <div *ngIf="f.desa.errors.required">Desa tidak boleh kosong</div>
+        </div>
+    </ion-item>
+    <ion-item class="bottom">
+      <ion-label position="stacked">Target <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="number" placeholder="Contoh : 500" formControlName="target"></ion-input>
+      <div *ngIf="submitted && f.target.errors" class="invalid-feedback">
+        <div *ngIf="f.target.errors.required">Target tidak boleh kosong</div>
+        </div>
+    </ion-item>
+    <div class="ion-text-center" style="margin-top:40px">
+      <ion-button color="tertiary" expand="block" type="submit" style="height:40px" >SUBMIT</ion-button>
+      </div>
+    </form>
 </ion-content>

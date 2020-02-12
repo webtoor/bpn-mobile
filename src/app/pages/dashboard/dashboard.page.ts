@@ -25,13 +25,11 @@ export class DashboardPage implements OnInit {
       'lokasi' : [null, [Validators.required]],
       'terukur' : [null, Validators.required],
       'tergambar' : [null, Validators.required],
-      'kkp' : [null, Validators.required],
-      'pengukuran' : [null, Validators.required],
-      'pemetaan' : [null, Validators.required],
-      'pbt' : [null, [Validators.required]],
-      'su' : [null, Validators.required],
-      'pengumuman' : [null, Validators.required],
-      'pengesahan' : [null, Validators.required],
+      'k4' : [null, Validators.required],
+      'puldadis' : [null, Validators.required],
+      'aplikasi_fisik_pbt' : [null, Validators.required],
+      'aplikasi_fisik_k4' : [null, [Validators.required]],
+      'aplikasi_fisik_yuridis' : [null, Validators.required],
       'keterangan' : null
     });
    }

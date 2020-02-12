@@ -13,12 +13,12 @@ import { Router } from '@angular/router';
 export class AppComponent implements AfterViewInit, OnDestroy {
   public appPages = [
     {
-      title: 'Report Harian',
+      title: 'Input PTSL 2020',
       url: '/dashboard',
       icon: 'bookmark'
     },
     {
-      title: 'Report History',
+      title: 'History Input PTSL 2020',
       url: '/my-report',
       icon: 'md-clipboard'
     },

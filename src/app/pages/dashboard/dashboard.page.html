@@ -3,15 +3,15 @@
      <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Input PTSL 2020</ion-title>
+    <ion-title class="ion-text-center" style="margin-right: 55px;">Input PTSL 2020</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="ion-text-center" style="margin-top: 20px;" > 
     <img src="assets/logo/bpn_logo.png" height="300px;" width="300px;" />
-    <p><b>Monitoring Input Harian Data Fisik-Yuridis PTSL 2020</b></p>
-    <p style="margin-top:-20px;">(Progres capaian harian agar di input dalam aplikasi)</p>
+    <p class="ion-padding"><b>Monitoring Input Harian Data Fisik-Yuridis PTSL 2020</b></p>
+    <p style="margin-top:-50px;" class="ion-padding" >(Progres capaian harian agar di input dalam aplikasi)</p>
   </div>
  
   <form [formGroup]="ReportForm" (ngSubmit)="onSubmit()">
@@ -44,7 +44,7 @@
 
         <ion-radio-group formControlName="lokasi">
           <ion-item *ngFor="let location of locations" style="margin-top:20px;">
-          <ion-label class="ion-text-wrap" > {{location.kotakab.name}}, {{location.kecamatan.name}}, {{location.desa.name}}, Target PBT : {{location.target_pbt}}, Target SHAT : {{location.target_shat}}, Target K4 : {{location.target_k4}}, Tim : {{location.tim}}</ion-label>
+          <ion-label class="ion-text-wrap" > {{location.kotakab.name}}, {{location.kecamatan.name}}, {{location.desa.name}}. <br> Target PBT : {{location.target_pbt}}.<br> Target SHAT : {{location.target_shat}}. <br> Target K4 : {{location.target_k4}}. <br> Tim : {{location.tim}}.</ion-label>
           <ion-radio slot="end" value="{{location.id}}"></ion-radio>
         </ion-item>
         <div *ngIf="submitted && f.lokasi.errors" class="invalid-feedback">

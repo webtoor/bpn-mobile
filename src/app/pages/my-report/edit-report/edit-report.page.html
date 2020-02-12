@@ -10,7 +10,7 @@
 <ion-content>
 <form [formGroup]="EditReportForm" (ngSubmit)="onSubmit()">
 
-  <ion-card>
+  <ion-card style="background-color: white;">
     <ion-card-header>
       <ion-card-subtitle>I. Tanggal Pelaporan</ion-card-subtitle>
     </ion-card-header>
@@ -29,14 +29,26 @@
   </ion-card>
 
  
-  <ion-card>
+  <ion-card style="background-color: white;">
     <ion-card-header>
       <ion-card-subtitle>II. Lokasi</ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content>
       <div style="color:black">
-        {{editReport?.kotakab.name}}, {{editReport?.kecamatan.name}}, {{editReport?.desa.name}}, Target PBT : {{editReport?.target_pbt}}, Target SHAT : {{editReport?.target_shat}}, Target K4 : {{editReport?.target_k4}}, Tim : {{editReport?.tim}}
+        {{editReport?.kotakab.name}}, {{editReport?.kecamatan.name}}, {{editReport?.desa.name}}. 
+      </div>
+      <div style="color:black">
+        Target PBT : {{editReport?.target_pbt}}.
+      </div>
+      <div style="color:black">
+        Target SHAT : {{editReport?.target_shat}}.
+      </div>
+      <div style="color:black">
+        Target K4 : {{editReport?.target_k4}}, Tim : {{editReport?.tim}}
+      </div>
+      <div style="color:black">
+        Tim : {{editReport?.tim}}
       </div>
     </ion-card-content>
   </ion-card>

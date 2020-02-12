@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, ToastController  } from '@ionic/angular';
+import { MenuController, ToastController, AlertController  } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../../../service/api.service';
@@ -17,20 +17,17 @@ export class AddLocationPage implements OnInit {
   desa:any;
   kecamatanIsEnabled = true;
   desaIsEnabled = true;
-
-  constructor(private formBuilder: FormBuilder, public loading: LoaderService,
+  userAuth;
+  constructor(public alertController: AlertController, private formBuilder: FormBuilder, public loading: LoaderService,
     public menu: MenuController, public router:Router, public apiService : ApiService, public toastController: ToastController) {
-    this.menu.enable(false);
+    const data = JSON.parse(localStorage.getItem('authBPN'));
+    this.userAuth = data;
     this.AddLocationForm = this.formBuilder.group({
-      'pelaksana' : [null, [Validators.required]],
       'tim' : [null, Validators.required],
       'kotakab' : [null, Validators.required],
       'kecamatan' : [null, Validators.required],
       'desa' : [null, Validators.required],
       'target' : [null, Validators.required],
-      'email' : [null, [Validators.required, Validators.email]],
-      'password' : [null, Validators.required],
-      'password_confirmation' : null
     });
    }
 
@@ -98,6 +95,54 @@ export class AddLocationPage implements OnInit {
 
      });
   }
+
+  async onSubmit() {
+    this.submitted = true;
+    if (this.AddLocationForm.invalid) {
+        return;
+    }
+    console.log(this.AddLocationForm.value)
+    this.AddLocationForm.patchValue({
+      password_confirmation : this.AddLocationForm.value.password
+    })
+    console.log(this.AddLocationForm.value)
+
+    const alert = await this.alertController.create({
+      header: 'Konfirmasi',
+      message: 'Anda yakin dengan isi data diatas?',
+      buttons: [
+        {
+          text: 'Periksa Kembali',
+          handler: () => {
+            
+          }
+        },
+       {
+          text: 'Ya',
+          handler: () => {
+            console.log('Confirm Okay');
+            this.loading.present();
+            this.apiService.postDataAuth(this.AddLocationForm.value, 'add-new-location', this.userAuth['access_token']).subscribe(res => {
+              console.log(res)
+             if(res.status == '1'){
+                this.presentToast('Anda Berhasil Menambahkan Lokasi', 'bottom')
+                //console.log(res.message);
+                this.router.navigate(['/dashboard'], {replaceUrl : true})
+                this.loading.dismiss();
+              }else if(res.status == '0'){
+                this.presentToast(res.message, 'bottom')
+                this.loading.dismiss();
+              }
+            }, (err) => {
+              this.presentToast('Maaf. Terjadi kesalahan, Coba beberapa saat lagi :(', 'bottom')
+              this.loading.dismiss();
+            });
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
   async presentToast(msg, positions) {
     const toast = await this.toastController.create({
       message: msg,
@@ -106,5 +151,8 @@ export class AddLocationPage implements OnInit {
     });
     toast.present();
   }
+
+  get f() { return this.AddLocationForm.controls; }
+
 
 }

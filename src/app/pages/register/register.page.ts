@@ -71,7 +71,7 @@ export class RegisterPage implements OnInit {
       }
     }, (err) => {
       this.presentToast("Terjadi Kesalahan, silakan coba lagi nanti :(", "bottom");
-
+      this.loading.dismiss();
     });
   }
 

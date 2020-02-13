@@ -26,7 +26,7 @@ export class DashboardPage implements OnInit {
       'terukur' : [null, Validators.required],
       'tergambar' : [null, Validators.required],
       'k4' : [null, Validators.required],
-      'puldadis' : [null, Validators.required],
+      'pemberkasan' : [null, Validators.required],
       'aplikasi_fisik_pbt' : [null, Validators.required],
       'aplikasi_fisik_k4' : [null, [Validators.required]],
       'aplikasi_fisik_yuridis' : [null, Validators.required],

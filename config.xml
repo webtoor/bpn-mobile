@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.bts.bts" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.input.ptsl" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Input PTSL 2020</name>
     <description>Input PTSL 2020</description>
-    <author email="hi@ionicframework.com" href="https://fityanali.site/">Webtor</author>
+    <author email="fityanalimunshi@gmail.com" href="https://fityanali.site/">Webtor</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

@@ -1,4 +1,8 @@
 <ion-content class="ion-padding">
+
+  <div class="ion-text-center" style="margin-top: 20px;" > 
+    <img src="assets/logo/bpn_logo.png" height="200px;" />
+  </div>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
     
@@ -22,6 +26,16 @@
 </div>
 </form>
 <ion-toolbar style="margin-top:40px;" color="white" class="ion-text-center">
-  <div style="font-size: 16px; font-weight: bold;" >Belum Punya Akun? <a (click)="registerPage()" color="primary" >Daftar Disini</a></div>
+ <!--  <div style="font-size: 16px; font-weight: bold;" >Belum Punya Akun? <a (click)="registerPage()" color="primary" >Daftar Sekarang</a></div> -->
+  <ion-button slot="start" expand="full" fill="clear" (click)="registerPage()">
+    <ion-icon slot="start" name="ios-link"></ion-icon>
+    Tutorial
+  </ion-button>
+  <ion-button slot="end" expand="full" fill="clear" (click)="registerPage()">
+    <ion-icon slot="end" name="ios-arrow-forward"></ion-icon>
+    Daftar
+  </ion-button>
 </ion-toolbar>
+
 </ion-content>
+

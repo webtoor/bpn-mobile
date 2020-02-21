@@ -1,14 +1,32 @@
 <ion-content class="ion-padding">
-  <!-- <div *ngFor="let item of kotakab">
-    {{item.name}}
-  </div> -->
+  <ion-toolbar color="white">
+    <!-- <div style="font-size: 12px; font-weight: bold;" >Sudah Punya Akun? <a (click)="loginPage()" color="primary" >Login Sekarang</a></div> -->
+    <ion-button slot="start" expand="full" fill="clear" (click)="loginPage()">
+      <ion-icon slot="start" name="ios-arrow-back"></ion-icon>
+      LOGIN
+    </ion-button>
+    <ion-button slot="end" expand="full" fill="clear" (click)="registerPage()">
+      <ion-icon slot="end" name="ios-link"></ion-icon>
+      TUTORIAL
+    </ion-button>
+</ion-toolbar>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-
+    <ion-item class="bottom"> 
+      <ion-label position="stacked">Tipe Pelaksana <ion-text color="danger">*</ion-text></ion-label>
+      <ion-select interface="popover" (ionChange)="NamaPelaksana($event)" placeholder="Pilih Tipe Pelaksana" formControlName="tipe_pelaksana">
+        <ion-select-option value="3">Aparatur Sipil Negara (ASN)</ion-select-option>
+      <ion-select-option value="1">Konsultan/Perusahaan</ion-select-option>
+    </ion-select>
+    <div *ngIf="submitted && f.tipe_pelaksana.errors" class="invalid-feedback">
+      <div *ngIf="f.tipe_pelaksana.errors.required">Tipe Pelaksana Tidak Boleh Kosong</div>
+      </div>
+    </ion-item>
   <ion-item class="bottom">
-    <ion-label position="stacked">Pelaksana <ion-text color="danger">*</ion-text></ion-label>
-    <ion-input type="text" placeholder="Contoh : PT. Digital Imaging Geospasial" formControlName="pelaksana"></ion-input>
+   
+    <ion-label position="stacked">Nama Pelaksana <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input type="text" disabled="{{NamaPelaksanaIsEnabled}}" placeholder="{{PHNamaPelaksana}}" formControlName="pelaksana"></ion-input>
     <div *ngIf="submitted && f.pelaksana.errors" class="invalid-feedback">
-      <div *ngIf="f.pelaksana.errors.required">Pelaksana tidak boleh kosong</div>
+      <div *ngIf="f.pelaksana.errors.required">Nama Pelaksana tidak boleh kosong</div>
       </div>
   </ion-item>
   <ion-item class="bottom">
@@ -84,7 +102,5 @@
     <ion-button color="tertiary" expand="block" type="submit" style="height:40px" >SUBMIT</ion-button>
     </div>
   </form>
-  <ion-toolbar style="margin-top:40px;" color="white" class="ion-text-center">
-    <div style="font-size: 16px; font-weight: bold;" >Sudah Punya Akun? <a (click)="loginPage()" color="primary" >Login Disini</a></div>
-</ion-toolbar>
+
 </ion-content>

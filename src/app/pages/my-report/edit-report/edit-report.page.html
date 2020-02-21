@@ -35,21 +35,29 @@
     </ion-card-header>
   
     <ion-card-content>
-      <div style="color:black">
-        {{editReport?.kotakab.name}}, {{editReport?.kecamatan.name}}, {{editReport?.desa.name}}. 
+      <div *ngIf="editReport?.kotakab else spinner">
+        <div style="color:black">
+          {{editReport?.kotakab.name}}, {{editReport?.kecamatan.name}}, {{editReport?.desa.name}}. 
+        </div>
+        <div style="color:black">
+          Target PBT : {{editReport?.target_pbt}}.
+        </div>
+        <div style="color:black">
+          Target SHAT : {{editReport?.target_shat}}.
+        </div>
+        <div style="color:black">
+          Target K4 : {{editReport?.target_k4}}.
+        </div>
+        <div style="color:black">
+          Tim : {{editReport?.tim}}.
+        </div>
       </div>
-      <div style="color:black">
-        Target PBT : {{editReport?.target_pbt}}.
-      </div>
-      <div style="color:black">
-        Target SHAT : {{editReport?.target_shat}}.
-      </div>
-      <div style="color:black">
-        Target K4 : {{editReport?.target_k4}}, Tim : {{editReport?.tim}}
-      </div>
-      <div style="color:black">
-        Tim : {{editReport?.tim}}
-      </div>
+      <ng-template #spinner>
+        <div class="ion-text-center">        
+          <ion-spinner></ion-spinner>
+        </div>
+      </ng-template>
+     
     </ion-card-content>
   </ion-card>
 
@@ -107,7 +115,7 @@
         </ion-card-header>
         <ion-card-content>
           <ion-item class="bottom" style="background-color: white;">
-            <ion-label position="stacked">d) Puldadis<ion-text color="danger">*</ion-text></ion-label>
+            <ion-label position="stacked">d) Pemberkasan<ion-text color="danger">*</ion-text></ion-label>
             <ion-input type="number" placeholder="Jawaban Anda" formControlName="pemberkasan" ></ion-input>
             <div *ngIf="submitted && f.pemberkasan.errors" class="invalid-feedback">
               <div *ngIf="f.pemberkasan.errors.required">Pemberkasan Tidak Boleh Kosong</div>

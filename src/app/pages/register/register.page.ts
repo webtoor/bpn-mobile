@@ -18,11 +18,14 @@ export class RegisterPage implements OnInit {
   desa:any;
   kecamatanIsEnabled = true;
   desaIsEnabled = true;
+  NamaPelaksanaIsEnabled = true;
+  PHNamaPelaksana =  'Contoh : PT. Digital Imaging Geospasial';
 
   constructor(private formBuilder: FormBuilder, public loading: LoaderService,
     public menu: MenuController, public router:Router, public apiService : ApiService, public toastController: ToastController) {
     this.menu.enable(false);
     this.registerForm = this.formBuilder.group({
+      'tipe_pelaksana' : [null, [Validators.required]],
       'pelaksana' : [null, [Validators.required]],
       'tim' : [null, Validators.required],
       'kotakab' : [null, Validators.required],
@@ -45,11 +48,16 @@ export class RegisterPage implements OnInit {
   }
 
   onSubmit() {
+    if(this.registerForm.value['tipe_pelaksana'] == '3'){
+      this.registerForm.patchValue({
+        pelaksana : 'ASN',
+      })
+    }
     this.submitted = true;
     if (this.registerForm.invalid) {
         return;
     }
-    console.log(this.registerForm.value)
+ 
     this.registerForm.patchValue({
       password_confirmation : this.registerForm.value.password
     })
@@ -75,6 +83,19 @@ export class RegisterPage implements OnInit {
       this.presentToast("Terjadi Kesalahan, silakan coba lagi nanti :(", "bottom");
       this.loading.dismiss();
     });
+  }
+
+  NamaPelaksana(event){
+    if(event.detail.value == '3'){
+      this.NamaPelaksanaIsEnabled = true;
+      this.PHNamaPelaksana = 'ASN'
+      console.log(event.detail.value)
+    }else{
+      this.NamaPelaksanaIsEnabled = false;
+      this.PHNamaPelaksana = 'Contoh : PT. Digital Imaging Geospasial'
+      console.log(event.detail.value)
+    }
+
   }
 
   getKotaKab(){
@@ -126,7 +147,7 @@ export class RegisterPage implements OnInit {
       if(res['status'] == 1){
         this.desaIsEnabled = false;
         this.desa = res['data']
-        console.log(res)
+        //console.log(res)
         this.loading.dismiss();
 
       }

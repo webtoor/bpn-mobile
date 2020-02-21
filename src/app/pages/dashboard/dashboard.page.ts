@@ -16,6 +16,7 @@ export class DashboardPage implements OnInit {
   submitted = false;
   userAuth;
   locations;
+  today;
   constructor(public router:Router, public toastController: ToastController, public alertController: AlertController, public formBuilder: FormBuilder, public loading: LoaderService, public menu : MenuController, public apiService : ApiService) {
     this.menu.enable(true);
     const data = JSON.parse(localStorage.getItem('authBPN'));
@@ -38,6 +39,7 @@ export class DashboardPage implements OnInit {
 
 
   ngOnInit() {
+    this.today = formatDate(new Date(), 'yyyy-MM-dd', 'en');
     this.getLocation();
   }
 
@@ -90,7 +92,7 @@ export class DashboardPage implements OnInit {
              if(res.status == '1'){
                 this.presentToast('Submit Laporan Berhasil, Terimakasih atas Laporan Anda', 'bottom')
                 //console.log(res.message);
-                window.location.reload();
+                //window.location.reload();
                 this.loading.dismiss();
               }else if(res.status == '0'){
                 this.presentToast(res.message, 'bottom')

@@ -14,7 +14,10 @@
     <ion-item>
       <ion-icon name="calendar" slot="start"></ion-icon>
       <ion-label> {{data.dtreport | date: "dd MMM yyyy" }}</ion-label>
-      <ion-button slot="end" color="tertiary" (click)="EditReport(data.id)">Edit</ion-button>
+      <ion-button slot="end" color="tertiary"  (click)="EditReport(data.id)">
+        <ion-icon slot="start" name="create"></ion-icon>
+        Edit
+      </ion-button>
     </ion-item>
   
     <ion-card-content>

@@ -24,13 +24,11 @@
     <ion-card-content>
       <ion-item>
         <ion-label position="stacked">Jawaban Anda <ion-text color="danger">*</ion-text></ion-label>
-        <ion-datetime displayFormat="DD-MM-YYYY" min="2020-02-01" max="2025-01-01" formControlName="dtreport"></ion-datetime>
+        <ion-datetime displayFormat="DD-MM-YYYY" min="2020-01-01" max="{{today}}" formControlName="dtreport"></ion-datetime>
         <div *ngIf="submitted && f.dtreport.errors" class="invalid-feedback">
           <div *ngIf="f.dtreport.errors.required">Tanggal Pelaporan Tidak Boleh Kosong</div>
         </div>
       </ion-item>
-      
-
     </ion-card-content>
   </ion-card>
 

@@ -7,7 +7,7 @@
           margin-top: 20px;
           margin-left: 20px;
           width: 25%;"/>   
-           <ion-item style="margin-top:40px;" color="white" no-border lines="none">
+          <ion-item style="margin-top:40px;" color="white" no-border lines="none">
               <b>{{emailShows}}</b>
         </ion-item>  
         </ion-toolbar>
@@ -22,6 +22,12 @@
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
+          <ion-item (click)="tutorial()">
+            <ion-icon slot="start" name="link" color="dark"></ion-icon>           
+             <ion-label>
+              Tutorial
+            </ion-label>
+          </ion-item>
           <ion-item (click)="logout()">
             <ion-icon slot="start" name="log-out" color="dark"></ion-icon>           
              <ion-label>
@@ -33,7 +39,7 @@
       <ion-footer no-border>
         <div class="ion-text-center">
          <p style="font-size:10px;">2020 © Badan Pertanahan Nasional</p>
-         <p style="font-size:10px; margin-top:-5px;">v1.0.0</p>
+         <p style="font-size:10px; margin-top:-5px;">v1.0.2</p>
         </div>
       </ion-footer>
     </ion-menu>

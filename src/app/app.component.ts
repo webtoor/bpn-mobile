@@ -98,6 +98,10 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
   }
 
+  tutorial(){
+    console.log('tutorial');
+  }
+
 
   async presentToast(msg, positions) {
     const toast = await this.toastController.create({

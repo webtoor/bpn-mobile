@@ -92,7 +92,7 @@ export class DashboardPage implements OnInit {
              if(res.status == '1'){
                 this.presentToast('Submit Laporan Berhasil, Terimakasih atas Laporan Anda', 'bottom')
                 //console.log(res.message);
-                //window.location.reload();
+                window.location.reload();
                 this.loading.dismiss();
               }else if(res.status == '0'){
                 this.presentToast(res.message, 'bottom')

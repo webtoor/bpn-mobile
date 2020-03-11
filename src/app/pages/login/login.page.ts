@@ -69,4 +69,9 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/register' ], {replaceUrl: true});
   }
 
+  tutorial(){
+    console.log('tutorial');
+    window.open("https://www.youtube.com/watch?v=4gRDWY52n_U");
+  }
+
 }

@@ -5,8 +5,8 @@ import { map, catchError } from 'rxjs/operators';
 import { Router} from '@angular/router';
 import { ToastController } from '@ionic/angular';
 
-let apiUrl = "http://127.0.0.1:8000/api/"; 
-/* let apiUrl = "https://monevkanwiljabar.com/api/";  */
+/* let apiUrl = "http://127.0.0.1:8000/api/";  */
+let apiUrl = "https://monevkanwiljabar.com/api/"; 
 /* let apiUrl = "http://192.168.1.7:8000/api/";  */
 
 @Injectable({

@@ -27,6 +27,7 @@ export class RegisterPage implements OnInit {
     this.registerForm = this.formBuilder.group({
       'tipe_pelaksana' : [null, [Validators.required]],
       'pelaksana' : [null, [Validators.required]],
+      'fullname' : [null, [Validators.required]],
       'tim' : [null, Validators.required],
       'kotakab' : [null, Validators.required],
       'kecamatan' : [null, Validators.required],
@@ -170,6 +171,12 @@ export class RegisterPage implements OnInit {
 
   loginPage(){
     this.router.navigate(['/login' ], {replaceUrl: true});
+  }
+
+  tutorial(){
+    console.log('tutorial');
+    window.open("https://www.youtube.com/watch?v=4gRDWY52n_U");
+
   }
 
 }

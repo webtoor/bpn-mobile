@@ -5,7 +5,7 @@
       <ion-icon slot="start" name="ios-arrow-back"></ion-icon>
       LOGIN
     </ion-button>
-    <ion-button slot="end" expand="full" fill="clear" (click)="registerPage()">
+    <ion-button slot="end" expand="full" fill="clear" (click)="tutorial()">
       <ion-icon slot="end" name="ios-link"></ion-icon>
       TUTORIAL
     </ion-button>
@@ -15,7 +15,7 @@
       <ion-label position="stacked">Tipe Pelaksana <ion-text color="danger">*</ion-text></ion-label>
       <ion-select interface="popover" (ionChange)="NamaPelaksana($event)" placeholder="Pilih Tipe Pelaksana" formControlName="tipe_pelaksana">
         <ion-select-option value="3">Aparatur Sipil Negara (ASN)</ion-select-option>
-      <ion-select-option value="1">Konsultan/Perusahaan</ion-select-option>
+      <ion-select-option value="2">Konsultan/Perusahaan</ion-select-option>
     </ion-select>
     <div *ngIf="submitted && f.tipe_pelaksana.errors" class="invalid-feedback">
       <div *ngIf="f.tipe_pelaksana.errors.required">Tipe Pelaksana Tidak Boleh Kosong</div>
@@ -27,6 +27,14 @@
     <ion-input type="text" disabled="{{NamaPelaksanaIsEnabled}}" placeholder="{{PHNamaPelaksana}}" formControlName="pelaksana"></ion-input>
     <div *ngIf="submitted && f.pelaksana.errors" class="invalid-feedback">
       <div *ngIf="f.pelaksana.errors.required">Nama Pelaksana tidak boleh kosong</div>
+      </div>
+  </ion-item>
+  <ion-item class="bottom">
+   
+    <ion-label position="stacked">Nama Lengkap <ion-text color="danger">*</ion-text></ion-label>
+    <ion-input type="text" placeholder="Masukan Nama Lengkap Anda" formControlName="fullname"></ion-input>
+    <div *ngIf="submitted && f.fullname.errors" class="invalid-feedback">
+      <div *ngIf="f.fullname.errors.required">Nama Lengkap tidak boleh kosong</div>
       </div>
   </ion-item>
   <ion-item class="bottom">

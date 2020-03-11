@@ -100,6 +100,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
   tutorial(){
     console.log('tutorial');
+    window.open("https://www.youtube.com/watch?v=4gRDWY52n_U");
   }
 
 

@@ -38,8 +38,8 @@ export class EditLocationPage implements OnInit {
      }
 
      ngOnInit() {
+      this.getKotaKab();
       this.EditLocation();
-      //this.getKotaKab();
     }
 
     EditLocation(){
@@ -53,6 +53,9 @@ export class EditLocationPage implements OnInit {
               'target_pbt' : res['data']['target_pbt'],
               'target_shat' : res['data']['target_shat'],
               'target_k4' : res['data']['target_k4'],
+              'kotakab' : res['data']['kotakab_id'],
+              'kecamatan' : res['data']['kecamatan_id'],
+              'desa' : res['data']['desa_id'],
             }) 
             this.loading.dismiss();
           }  
@@ -138,7 +141,7 @@ export class EditLocationPage implements OnInit {
       })
       console.log(this.EditLocationForm.value)
   
-      const alert = await this.alertController.create({
+   /*    const alert = await this.alertController.create({
         header: 'Konfirmasi',
         message: 'Anda yakin dengan isi data diatas?',
         buttons: [
@@ -172,7 +175,7 @@ export class EditLocationPage implements OnInit {
           }
         ]
       });
-      await alert.present();
+      await alert.present(); */
     }
     async presentToast(msg, positions) {
       const toast = await this.toastController.create({

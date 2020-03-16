@@ -36,7 +36,10 @@ export class DashboardPage implements OnInit {
    }
 
   get f() { return this.ReportForm.controls; }
+  editLocation(id){
+    this.router.navigate(['/dashboard/edit-location/',id])
 
+  }
 
   ngOnInit() {
     this.today = formatDate(new Date(), 'yyyy-MM-dd', 'en');
